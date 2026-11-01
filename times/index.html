@@ -1,0 +1,457 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Times Rocket">
+<meta name="theme-color" content="#1b1446">
+<title>Times Table Rocket</title>
+<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAD1ElEQVR4Xu2bTWgTQRTHd+ueWtPQD4liNVLapE1rpdokWgUFiwhCQasnURBFRC+epKitWFHEkxdBBC+erTcv0oIXq20OorRpU0oxKIhgLWlsb3ZlJuzu7GZ3ZzaZ6c5u+iubj83L7vzfvHnzJnREwQG9sSeyA3PXmEjfEklvjjU81P7YE6Kt+Dg7aKvR9sODbY88LV7h09xtS52mHyTbHvpCuJHJuTtFeotOJKMPfCleYTIzpNOse5OIjvhavMJUZljVLaFhIsvrpMnTN6ieiEeGuev9qcx96OhE9J7O4VOvx7AdkDjbZ2uTmh+B2qvAQ0/rkCzLssDboYC2i0Q8ANjZ6QGaVQfIwjqXR0/kLjyU9qVGx7E933FqQrUB9nbaNAdw2PtmbTKCigUo79HzdtqgA/a3DMqCAJKfFw4No1hU9MzbXsTSWhfQLnk18wORZj2uFy9gZ7YqWfDOnxGjWON7AE5dlQDmfq8cBqxygA6MNs9GgNWYNzoFGwEgB3jlQFHC3fiMzgZwCGD0ScBDbvB18al6267mmyU1wSwHgAhAz+P0uZcDUAhzUFf/AayjUPHQHp8D3KkCdfodtGFvfzfWCQBgR3JdsSN8fcPGwPS3Z9jGd+65gbWhiVSoAHliY9sjgVqZJ0jaM5N9Xsj24WtlN10C44Ql6ewL08ufyGqn34W114o4QCx81bZpNNrO9VrAap3SvvsKtT6TQLXML+zb5loEoGFvxUasVF2rBEnAVXE0kGClxCslti3z4xVUFG26iFXGfBYoh3KzPMn3uasDUEhqAjNad54n9ruvI4AESWBQCS6cwY89EhZOX1DNWt4UxjVtuI4A3XBgVLFynQNo5AMc1FaDiwOXcfcqi8WBS+r3m0dflnUtFNcqwXKgWSFyXQlaQbNCZB4B4VC/qiM7tqRpSm3RXsf/qa/DfQ2a/Tnz9T7VCGC/GnS6oiOxJ7Ehg3kEOO0tEnsSG1LEpm0n6bnTAd/HV1TrXcdrHXyTLkwqQccwqEZJ4aISZFXlkeBeJYjMAqWu+miwGQGl/upClRJ/+aGBuL3+qCuzAEt+Lr2Hl9/RcAx7G+Z1gJuQ1AtiqO6I7yLACb6OAMCv5Q/wOVR32NQvnlwNloLVClJsDCYregjA/5huDMYr0gm/cykR7hdwsxJzm4IDGP3i6gXUDRP1ge6KGgZ/8p+hdt2eobrAvopwwnL+y+aeIYWibXPBrZ2+joLc32nrbXMKwZqYL52QW03jN06i1Na0+8IRK6uzRcIth4CRQHXU007Ir2UsxRfNAjgC1RFPOCO/Nm8rGuU/VtOGi0IZYlsAAAAASUVORK5CYII=">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<!-- PLAY COUNTER: GoatCounter site zayngames -->
+<script data-goatcounter="https://zayngames.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&display=swap">
+<style>
+/* Layout: a header with three big tabs (Practice / Tables / Progress) over one centered column.
+   Practice = rocket track + question card + big keypad. Single deliberate night-sky look. */
+:root{
+  --space:#1b1446; --space2:#0d0a26; --panel:#2a2163; --panel2:#352a7a; --ink:#ffffff; --muted:#c9c2f2;
+  --yellow:#ffd23a; --pink:#ff6bb5; --cyan:#45e0ff; --green:#4fe08a; --red:#ff7a7a; --orange:#ff9d3d;
+  --round:"Baloo 2","Comic Sans MS","Chalkboard SE",system-ui,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--space2);-webkit-text-size-adjust:100%;touch-action:manipulation}
+body{margin:0;min-height:100vh;color:var(--ink);font-family:var(--round);
+  background-color:var(--space2);background-image:radial-gradient(ellipse 120% 60% at 50% 0%,#3a2a8a 0%,var(--space) 45%,var(--space2) 100%);background-repeat:no-repeat;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  padding-block:calc(10px + env(safe-area-inset-top,0px)) calc(20px + env(safe-area-inset-bottom,0px));
+  -webkit-user-select:none;user-select:none;-webkit-tap-highlight-color:transparent}
+[hidden]{display:none!important}
+button{font-family:var(--round);cursor:pointer;-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+button:focus-visible,a:focus-visible{outline:4px solid var(--yellow);outline-offset:3px}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+header{display:flex;align-items:center;gap:10px}
+header h1{margin:0;flex:1;min-width:0;font-size:clamp(22px,5.4vw,34px);line-height:1.05;color:var(--yellow);text-shadow:0 3px 0 rgba(0,0,0,.3)}
+.home{width:46px;height:46px;border-radius:50%;background:var(--panel);display:flex;align-items:center;justify-content:center;font-size:22px;text-decoration:none;flex:none}
+.iconbtn{width:46px;height:46px;border-radius:50%;border:0;background:var(--panel);color:#fff;font-size:20px;flex:none}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.tab{border:0;border-radius:16px;padding:10px 6px;font-size:clamp(16px,4.2vw,20px);font-weight:800;background:var(--panel);color:var(--muted);box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.tab[aria-selected="true"]{background:var(--yellow);color:#2a1d00}
+.card{background:var(--panel);border-radius:22px;padding:16px;box-shadow:0 6px 0 rgba(0,0,0,.25)}
+h2{margin:0 0 8px;font-size:22px;line-height:1.1}
+p{margin:0}
+.muted{color:var(--muted)}
+.big{border:0;border-radius:18px;padding:12px 26px;font-size:24px;font-weight:800;background:var(--green);color:#06301a;box-shadow:0 5px 0 rgba(0,0,0,.3)}
+.big.alt{background:var(--panel2);color:#fff}
+.big:active,.key:active,.chip:active,.tab:active{transform:translateY(3px);box-shadow:0 2px 0 rgba(0,0,0,.3)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center}
+/* table pickers */
+.chips{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.chip{border:0;border-radius:14px;padding:10px 0;font-size:22px;font-weight:800;background:var(--panel2);color:#fff;box-shadow:0 4px 0 rgba(0,0,0,.25)}
+.chip.on{background:var(--cyan);color:#06202a}
+.chip.cur{background:var(--yellow);color:#2a1d00}
+/* practice */
+.track{position:relative;height:56px;border-radius:28px;background:rgba(255,255,255,.08);overflow:hidden}
+.track .fill{position:absolute;left:0;top:0;bottom:0;background:linear-gradient(90deg,rgba(69,224,255,.25),rgba(255,210,58,.35));transition:width .5s}
+.track .earth,.track .moon{position:absolute;top:50%;transform:translateY(-50%);font-size:30px}
+.track .earth{left:10px}.track .moon{right:10px}
+.track .rocket{position:absolute;top:50%;font-size:34px;transform:translate(-50%,-50%) rotate(45deg);transition:left .6s cubic-bezier(.3,1.4,.5,1)}
+.qcard{text-align:center;display:flex;flex-direction:column;gap:6px}
+.q{font-size:clamp(54px,15vw,96px);font-weight:800;line-height:1;letter-spacing:1px;font-variant-numeric:tabular-nums}
+.q .ans{display:inline-block;min-width:1.6em;border-bottom:6px solid var(--yellow);color:var(--yellow)}
+.q.right .ans{color:var(--green);border-color:var(--green)}
+.q.wrong .ans{color:var(--red);border-color:var(--red)}
+.meta{display:flex;justify-content:space-between;color:var(--muted);font-size:18px;font-weight:700}
+.feedback{min-height:1.4em;font-size:22px;font-weight:800}
+.tip{background:rgba(255,255,255,.08);border-radius:16px;padding:12px 14px;font-size:18px;line-height:1.35;text-align:left}
+.tip b{color:var(--yellow)}
+.keypad{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.key{border:0;border-radius:18px;padding:0;height:clamp(58px,12vw,76px);font-size:clamp(30px,7vw,40px);font-weight:800;background:var(--panel2);color:#fff;box-shadow:0 5px 0 rgba(0,0,0,.3)}
+.key.go{background:var(--green);color:#06301a}
+.key.del{background:#4a3f8f}
+.stars{font-size:46px;letter-spacing:6px}
+.list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.pill{background:var(--panel2);border-radius:999px;padding:4px 12px;font-size:19px;font-weight:700}
+/* tables (reference) */
+.facts{display:grid;grid-template-columns:repeat(2,1fr);gap:6px 18px;font-size:clamp(22px,5.6vw,30px);font-weight:700;font-variant-numeric:tabular-nums}
+.facts div{display:flex;justify-content:space-between;border-bottom:1px dashed rgba(255,255,255,.15);padding:2px 4px}
+.facts span:last-child{color:var(--yellow)}
+.gridwrap{overflow-x:auto}
+table.grid{border-collapse:separate;border-spacing:3px;margin:0 auto;font-variant-numeric:tabular-nums}
+.grid td,.grid th{width:clamp(26px,6.6vw,48px);height:clamp(26px,6.6vw,40px);text-align:center;font-size:clamp(12px,3.2vw,18px);font-weight:700;border-radius:8px}
+.grid th{background:var(--panel2);color:var(--yellow);cursor:pointer}
+.grid td{background:rgba(255,255,255,.06);cursor:pointer}
+.grid td.hl{background:rgba(69,224,255,.22)}
+.grid td.sq{color:var(--pink)}
+.grid td.pick{background:var(--yellow);color:#2a1d00}
+.gridtip{text-align:center;font-size:22px;font-weight:800;min-height:1.5em}
+/* progress */
+.legend{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;font-size:16px;font-weight:700}
+.legend i{display:inline-block;width:18px;height:18px;border-radius:5px;vertical-align:-3px;margin-right:4px}
+.b0,.grid td.b0{background:rgba(255,255,255,.08)} .b1,.grid td.b1{background:#ff7a7a;color:#3a0000} .b2,.grid td.b2{background:#ff9d3d;color:#3a1800} .b3,.grid td.b3{background:#ffd23a;color:#2a1d00} .b4,.grid td.b4{background:#7ee08a;color:#06301a} .b5,.grid td.b5{background:#2ec46b;color:#03240f}
+.confirm{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;align-items:center}
+@media (max-width:420px){ .chips{grid-template-columns:repeat(4,1fr)} .facts{grid-template-columns:1fr} }
+@media (prefers-reduced-motion:reduce){ .track .rocket,.track .fill{transition:none} }
+#nojs{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:var(--space2);font:600 20px/1.4 system-ui,sans-serif;z-index:9}
+</style>
+</head>
+<body>
+<div id="nojs">If this message stays, open Times Table Rocket from its web link in Safari or Chrome.</div>
+<div class="wrap">
+  <header>
+    <a class="home" href="../" aria-label="Back to Zayn's Arcade">🏠</a>
+    <h1>Times Table Rocket 🚀</h1>
+    <button class="iconbtn" id="sound" aria-label="Sound on or off">🔊</button>
+  </header>
+  <nav class="tabs" role="tablist">
+    <button class="tab" role="tab" id="tab-practice" aria-selected="true">🚀 Practice</button>
+    <button class="tab" role="tab" id="tab-tables" aria-selected="false">📖 Tables</button>
+    <button class="tab" role="tab" id="tab-progress" aria-selected="false">⭐ Progress</button>
+  </nav>
+
+  <!-- ===== PRACTICE ===== -->
+  <section id="view-practice">
+    <div class="card" id="setup">
+      <h2>Which times tables?</h2>
+      <p class="muted" style="margin-bottom:10px">Tap to pick. The ones you find tricky will come back more often.</p>
+      <div class="chips" id="pickChips"></div>
+      <div class="row" style="margin-top:12px">
+        <button class="big alt" id="pickAll">All</button>
+        <button class="big alt" id="pickNone">Clear</button>
+        <button class="big" id="startBtn">Blast off! 🚀</button>
+      </div>
+      <p class="muted" id="setupNote" style="text-align:center;margin-top:10px"></p>
+    </div>
+
+    <div id="round" hidden style="display:flex;flex-direction:column;gap:12px">
+      <div class="track" aria-hidden="true"><div class="fill" id="fill"></div><span class="earth">🌍</span><span class="moon">🌙</span><span class="rocket" id="rocket">🚀</span></div>
+      <div class="card qcard">
+        <div class="meta"><span id="qnum">Question 1 of 10</span><span id="streak"></span></div>
+        <div class="q" id="q"><span id="qa">7</span> × <span id="qb">8</span> = <span class="ans" id="ans">&nbsp;</span></div>
+        <div class="feedback" id="feedback">&nbsp;</div>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="keypad" id="keypad"></div>
+    </div>
+
+    <div class="card" id="done" hidden style="text-align:center;display:flex;flex-direction:column;gap:12px">
+      <h2 id="doneTitle">You landed on the moon! 🌙</h2>
+      <div class="stars" id="doneStars"></div>
+      <p id="doneScore" style="font-size:22px;font-weight:700"></p>
+      <div id="doneTricky"></div>
+      <div class="row"><button class="big" id="againBtn">Fly again 🚀</button><button class="big alt" id="changeBtn">Change tables</button></div>
+    </div>
+  </section>
+
+  <!-- ===== TABLES (reference) ===== -->
+  <section id="view-tables" hidden style="display:flex;flex-direction:column;gap:12px">
+    <div class="card">
+      <h2>Pick a table to learn</h2>
+      <div class="chips" id="refChips"></div>
+      <div class="row" style="margin-top:10px"><button class="big alt" id="chartBtn">See the big chart</button></div>
+    </div>
+    <div class="card" id="refTable">
+      <h2 id="refTitle">The 7 times table</h2>
+      <div class="tip" id="refTip" style="margin-bottom:12px"></div>
+      <div class="facts" id="refFacts"></div>
+    </div>
+    <div class="card" id="refChart" hidden>
+      <h2>The big chart</h2>
+      <p class="muted" style="margin-bottom:8px">Tap any square to see the answer. Pink squares are numbers times themselves.</p>
+      <div class="gridtip" id="gridTip">Tap a square!</div>
+      <div class="gridwrap"><table class="grid" id="chart"></table></div>
+    </div>
+  </section>
+
+  <!-- ===== PROGRESS ===== -->
+  <section id="view-progress" hidden style="display:flex;flex-direction:column;gap:12px">
+    <div class="card">
+      <h2>Your star map</h2>
+      <p class="muted" id="progSummary" style="margin-bottom:10px"></p>
+      <div class="legend">
+        <span><i class="b0"></i>Not tried</span><span><i class="b1"></i>Tricky</span><span><i class="b2"></i>Learning</span>
+        <span><i class="b3"></i>Getting there</span><span><i class="b4"></i>Good</span><span><i class="b5"></i>Mastered</span>
+      </div>
+      <div class="gridwrap" style="margin-top:10px"><table class="grid" id="progGrid"></table></div>
+    </div>
+    <div class="card" style="text-align:center">
+      <p class="muted" style="margin-bottom:10px">Grown-ups: clear all progress on this device.</p>
+      <div class="confirm" id="resetArea"><button class="big alt" id="resetBtn">Reset progress</button></div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function(){
+try{ document.getElementById("nojs").remove(); }catch(e){}
+const $=id=>document.getElementById(id);
+const N=12, ROUND=10;
+
+// ================= Memory tips =================
+const TABLE_TIPS={
+  1:"Anything <b>times 1 stays the same</b>. 1 × 9 = 9.",
+  2:"Times 2 is <b>doubling</b>: add the number to itself. 2 × 7 = 7 + 7 = 14.",
+  3:"<b>Count by 3s</b>: 3, 6, 9, 12, 15, 18, 21, 24, 27, 30, 33, 36. The digits of every answer add up to 3, 6 or 9!",
+  4:"<b>Double it, then double again.</b> 4 × 6: double 6 is 12, double 12 is 24.",
+  5:"Answers always <b>end in 0 or 5</b>. It's <b>half of times 10</b>: 5 × 8 is half of 80, which is 40.",
+  6:"6 times an <b>even</b> number ends in that number: 6 × 4 = 2<b>4</b>, 6 × 6 = 3<b>6</b>, 6 × 8 = 4<b>8</b>.",
+  7:"Remember <b>5, 6, 7, 8</b>: 56 = 7 × 8! And 7 × 7 = 49, the number of days in 7 weeks.",
+  8:"<b>Double, double, double!</b> 8 × 3: 3 → 6 → 12 → 24.",
+  9:"<b>Finger trick:</b> hold up 10 fingers and fold down finger number 4. You see 3 fingers, then 6, so 9 × 4 = 36! The digits always add up to 9.",
+  10:"Just <b>put a 0 on the end</b>: 10 × 7 = 70.",
+  11:"Up to 9, <b>write the number twice</b>: 11 × 4 = 44. Then 11 × 10 = 110, 11 × 11 = 121, 11 × 12 = 132.",
+  12:"Do <b>times 10, then add times 2</b>. 12 × 7 = 70 + 14 = 84.",
+};
+const FACT_TIPS={
+  "3x4":"<b>1, 2, 3, 4</b>: 12 = 3 × 4!",
+  "7x8":"<b>5, 6, 7, 8</b>: 56 = 7 × 8!",
+  "8x8":"\"I ate and I ate till I was sick on the floor: <b>8 × 8 is 64</b>!\"",
+  "6x8":"\"6 and 8 went out on a date, they came back home at <b>48</b>!\"",
+  "6x7":"\"6 × 7, that's easy to do: it's <b>42</b>!\" Or: 6 × 7 = 6 × 5 + 6 × 2 = 30 + 12.",
+  "7x7":"7 weeks have <b>49</b> days: 7 × 7 = 49.",
+  "6x6":"6 times an even number ends the same: 6 × 6 = 3<b>6</b>.",
+  "4x4":"A 4 × 4 truck has <b>16</b> wheels... well, not really, but 4 × 4 = 16!",
+  "12x12":"12 × 12 = <b>144</b>. It even has a special name: a gross!",
+  "11x11":"11 × 11 = <b>121</b>. It reads the same backwards!",
+  "9x9":"9 × 9 = <b>81</b>. The digits 8 + 1 add up to 9!",
+  "5x5":"5 × 5 = <b>25</b>, like 25 cents in a quarter.",
+  "7x9":"Finger trick for 9 × 7: fold down finger 7. 6 fingers, then 3: <b>63</b>.",
+  "8x9":"9 × 8: fold down finger 8. 7 fingers, then 2: <b>72</b>.",
+  "6x9":"9 × 6: fold down finger 6. 5 fingers, then 4: <b>54</b>.",
+  "7x12":"12 × 7 = 70 + 14 = <b>84</b>.",
+  "8x12":"12 × 8 = 80 + 16 = <b>96</b>.",
+  "4x7":"Double 7 is 14, double 14 is <b>28</b>.",
+  "4x8":"Double 8 is 16, double 16 is <b>32</b>.",
+  "3x8":"Double, double, double 3: 6, 12, <b>24</b>.",
+  "3x7":"3 × 7 = 7 + 7 + 7 = <b>21</b>.",
+  "8x7":"<b>5, 6, 7, 8</b>: 56 = 7 × 8!",
+};
+const key=(a,b)=>Math.min(a,b)+"x"+Math.max(a,b);
+// A "use a fact you know" strategy, worked out from the numbers
+function strategy(a,b){
+  const x=Math.min(a,b), y=Math.max(a,b);
+  if(x===1||y===1||x===10||y===10||x===2||y===2) return "";
+  if(y===9) return `<b>Trick:</b> ${x} × 10 − ${x} = ${x*10} − ${x} = ${x*9}.`;
+  if(y===11&&x<=9) return "";
+  if(y===12) return `<b>Trick:</b> ${x} × 10 + ${x} × 2 = ${x*10} + ${x*2} = ${x*12}.`;
+  if(y>5) return `<b>Trick:</b> ${x} × 5 + ${x} × ${y-5} = ${x*5} + ${x*(y-5)} = ${x*y}.`;
+  if(x===4||y===4){ const o=x===4?y:x; return `<b>Trick:</b> double ${o} is ${o*2}, double again is ${o*4}.`; }
+  return `<b>Trick:</b> count by ${y}s, ${x} times.`;
+}
+// When there's no special rhyme for a fact, use the tip of whichever table makes it easiest
+const EASIEST=[1,10,2,5,11,9,12,4,3,8,7,6];
+function tipFor(a,b){
+  const k=key(a,b), t=FACT_TIPS[k]||TABLE_TIPS[EASIEST.find(n=>n===a||n===b)];
+  const s=strategy(a,b);
+  return t+(s&&!FACT_TIPS[k]?"<br>"+s:"");
+}
+
+// ================= Saved progress (this device only) =================
+let P={pairs:{},selected:[2,3,4,5,10]};
+try{ const raw=localStorage.getItem("times-rocket-v1"); if(raw){ const p=JSON.parse(raw); if(p&&p.pairs) P=p; } }catch(e){}
+function save(){ try{ localStorage.setItem("times-rocket-v1",JSON.stringify(P)); }catch(e){} }
+function st(k){ return P.pairs[k]||(P.pairs[k]={box:0,right:0,wrong:0}); }  // use only when recording an answer
+const boxOf=k=>(P.pairs[k]?P.pairs[k].box:0);
+
+// ================= Sound =================
+let ac=null, soundOn=true;
+try{ soundOn=localStorage.getItem("times-sound")!=="off"; }catch(e){}
+function updSound(){ $("sound").textContent=soundOn?"🔊":"🔇"; } updSound();
+function tone(notes,type="triangle",step=.1,vol=.16){
+  if(!soundOn) return;
+  try{ ac=ac||new (window.AudioContext||window.webkitAudioContext)(); if(ac.state==="suspended") ac.resume();
+    const t=ac.currentTime;
+    notes.forEach((f,i)=>{ const o=ac.createOscillator(), g=ac.createGain(); o.type=type; o.frequency.value=f; o.connect(g); g.connect(ac.destination);
+      g.gain.setValueAtTime(.0001,t+i*step); g.gain.exponentialRampToValueAtTime(vol,t+i*step+.02); g.gain.exponentialRampToValueAtTime(.0001,t+i*step+step*1.5);
+      o.start(t+i*step); o.stop(t+i*step+step*1.6); });
+  }catch(e){}
+}
+$("sound").addEventListener("click",()=>{ soundOn=!soundOn; updSound(); try{ localStorage.setItem("times-sound",soundOn?"on":"off"); }catch(e){} });
+function track(name){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:name,title:name,event:true}); }catch(e){} }
+
+// ================= Tabs =================
+const VIEWS=["practice","tables","progress"];
+function showTab(v){
+  VIEWS.forEach(x=>{ $("view-"+x).hidden=x!==v; $("tab-"+x).setAttribute("aria-selected",String(x===v)); });
+  if(v==="progress") renderProgress();
+  if(v==="tables") renderRef();
+}
+VIEWS.forEach(v=>$("tab-"+v).addEventListener("click",()=>showTab(v)));
+
+// ================= Practice: choosing tables =================
+function renderPick(){
+  const box=$("pickChips"); box.innerHTML="";
+  for(let i=1;i<=N;i++){
+    const b=document.createElement("button"); b.className="chip"+(P.selected.includes(i)?" on":""); b.textContent=i;
+    b.setAttribute("aria-pressed",String(P.selected.includes(i))); b.setAttribute("aria-label","Times "+i);
+    b.addEventListener("click",()=>{ P.selected=P.selected.includes(i)?P.selected.filter(x=>x!==i):[...P.selected,i].sort((a,b)=>a-b); save(); renderPick(); });
+    box.appendChild(b);
+  }
+  const pool=poolKeys(), tricky=pool.filter(k=>boxOf(k)===1).length;
+  $("startBtn").disabled=!P.selected.length; $("startBtn").style.opacity=P.selected.length?1:.5;
+  $("setupNote").textContent=!P.selected.length?"Pick at least one table.":tricky?`${tricky} tricky one${tricky>1?"s":""} will come back to practise.`:"";
+}
+$("pickAll").addEventListener("click",()=>{ P.selected=[1,2,3,4,5,6,7,8,9,10,11,12]; save(); renderPick(); });
+$("pickNone").addEventListener("click",()=>{ P.selected=[]; save(); renderPick(); });
+
+// ================= The learning algorithm (Leitner boxes + quick retries) =================
+// Every fact (7×8 and 8×7 count as one) sits in a box from 0 to 5:
+//   0 = never tried, 1 = tricky, ... 5 = mastered.
+// Right answer: move up one box. Wrong answer: back to box 1, and it is asked again
+// 3 questions later and once more ~7 questions later (inside the same round when possible).
+// New questions are chosen at random, weighted so low boxes come up far more often.
+const WEIGHT=[8,12,5,2.5,1.2,.5];
+function poolKeys(){
+  const s=new Set();
+  for(const a of P.selected) for(let b=1;b<=N;b++) s.add(key(a,b));
+  return [...s];
+}
+let R=null; // the current round
+function pickNext(){
+  // 1) a retry that is due now
+  const due=R.retries.findIndex(r=>r.at<=R.n);
+  if(due>=0){ const r=R.retries.splice(due,1)[0]; return r.k; }
+  // 2) weighted random, avoiding the last two facts
+  const pool=poolKeys().filter(k=>!R.recent.includes(k));
+  const list=pool.length?pool:poolKeys();
+  let total=0; const w=list.map(k=>{ const v=WEIGHT[boxOf(k)]; total+=v; return v; });
+  let r=Math.random()*total;
+  for(let i=0;i<list.length;i++){ r-=w[i]; if(r<=0) return list[i]; }
+  return list[list.length-1];
+}
+function askNext(){
+  const k=pickNext(); let [a,b]=k.split("x").map(Number);
+  if(Math.random()<.5) [a,b]=[b,a]; // show both orders: 7 × 8 and 8 × 7
+  R.cur={k,a,b}; R.recent=[k,...R.recent].slice(0,2); R.typed=""; R.fixing=false; R.firstTry=true; R.t0=performance.now();
+  $("qa").textContent=a; $("qb").textContent=b; $("ans").innerHTML="&nbsp;"; $("q").className="q";
+  $("qnum").textContent=`Question ${R.n+1} of ${ROUND}`;
+  $("feedback").innerHTML="&nbsp;"; $("tip").hidden=true;
+  updRocket();
+}
+function startRound(){
+  if(!P.selected.length) return;
+  R={n:0,right:0,streak:0,best:0,retries:[],recent:[],missed:new Set(),cur:null,typed:""};
+  $("setup").hidden=true; $("done").hidden=true; $("round").hidden=false;
+  track("times-round-started"); tone([392,523,659]); askNext();
+}
+function updRocket(){
+  const pct=R.right/ROUND;
+  $("fill").style.width=(pct*100)+"%";
+  $("rocket").style.left=`calc(48px + (100% - 96px) * ${pct})`;
+  $("streak").textContent=R.streak>=2?`🔥 ${R.streak} in a row`:"";
+}
+const PRAISE=["Great job!","Super!","Awesome!","You got it!","Brilliant!","Rocket power!","Yes!","Fantastic!"];
+function submit(){
+  if(!R||!R.cur||R.typed==="") return;
+  const {k,a,b}=R.cur, want=a*b, got=Number(R.typed), s=st(k);
+  if(R.fixing){
+    // after a mistake he types the right answer once, to lock it in
+    if(got===want){ R.n++; next(); } else { R.typed=""; $("ans").innerHTML="&nbsp;"; tone([200],"sine",.15,.1); }
+    return;
+  }
+  if(got===want){
+    s.right++; if(R.firstTry) s.box=Math.min(5,Math.max(s.box,1)+1); // new & right -> Learning (2); never lands in Tricky
+    R.right++; R.streak++; R.best=Math.max(R.best,R.streak);
+    $("q").className="q right";
+    $("feedback").textContent=(R.streak>=3&&R.streak%3===0)?`🔥 ${R.streak} in a row!`:PRAISE[Math.floor(Math.random()*PRAISE.length)];
+    tone([659,880],"triangle",.08);
+    save(); updRocket(); R.n++;
+    setTimeout(next,650);
+  } else {
+    s.wrong++; s.box=1; R.streak=0; R.firstTry=false; R.missed.add(k);
+    // bring it back: in 3 questions, then again in about 7
+    R.retries.push({k,at:R.n+3},{k,at:R.n+7});
+    $("q").className="q wrong";
+    $("feedback").innerHTML=`Not quite. ${a} × ${b} = <span style="color:var(--yellow)">${want}</span>`;
+    $("tip").innerHTML="💡 "+tipFor(a,b)+"<br><span class='muted'>Now type "+want+" to keep flying.</span>"; $("tip").hidden=false;
+    tone([300,220],"sine",.14,.12);
+    save(); R.fixing=true; R.typed=""; setTimeout(()=>{ if(R&&R.fixing&&R.typed===""){ $("ans").innerHTML="&nbsp;"; $("q").className="q"; } },900);
+    updRocket();
+  }
+}
+function next(){ if(R.n>=ROUND) finish(); else askNext(); }
+function finish(){
+  $("round").hidden=true; $("done").hidden=false;
+  const stars=R.right>=ROUND?3:R.right>=7?2:R.right>=4?1:0;
+  $("doneStars").textContent="⭐".repeat(stars)+"☆".repeat(3-stars);
+  $("doneTitle").textContent=stars===3?"You landed on the moon! 🌙":"Great flying! 🚀";
+  $("doneScore").textContent=`${R.right} out of ${ROUND} right on the first try${R.best>=3?` · best streak ${R.best} 🔥`:""}`;
+  const tricky=[...R.missed];
+  $("doneTricky").innerHTML=tricky.length?`<p class="muted" style="margin-bottom:8px">These will come back next time:</p><div class="list">${tricky.map(k=>{const[x,y]=k.split("x");return `<span class="pill">${x} × ${y} = ${x*y}</span>`}).join("")}</div>`:"<p class='muted'>No mistakes at all. Amazing!</p>";
+  tone(stars===3?[523,659,784,1047,784,1047]:[523,659,784],"triangle",.13);
+  track("times-round-finished"); if(stars===3) track("times-perfect-round");
+  R.cur=null;
+}
+// Only first-try answers move the rocket and count toward stars
+function press(d){
+  if(!R||!R.cur||$("round").hidden) return;
+  if(d==="del"){ R.typed=R.typed.slice(0,-1); }
+  else if(d==="go"){ submit(); return; }
+  else if(R.typed.length<3){ R.typed=(R.typed==="0"?"":R.typed)+d; }
+  $("ans").textContent=R.typed||" ";
+  if(!R.fixing) $("q").className="q";
+}
+(function buildKeypad(){
+  const kp=$("keypad"); const keys=["1","2","3","4","5","6","7","8","9","del","0","go"];
+  for(const k of keys){ const b=document.createElement("button"); b.className="key"+(k==="go"?" go":k==="del"?" del":"");
+    b.textContent=k==="go"?"✓":k==="del"?"⌫":k; b.setAttribute("aria-label",k==="go"?"Check answer":k==="del"?"Delete":k);
+    b.addEventListener("click",()=>press(k)); kp.appendChild(b); }
+})();
+addEventListener("keydown",e=>{
+  if(/^[0-9]$/.test(e.key)) press(e.key);
+  else if(e.key==="Backspace") press("del");
+  else if(e.key==="Enter"){ if(!$("round").hidden) press("go"); }
+});
+$("startBtn").addEventListener("click",startRound);
+$("againBtn").addEventListener("click",startRound);
+$("changeBtn").addEventListener("click",()=>{ $("done").hidden=true; $("setup").hidden=false; renderPick(); });
+
+// ================= Tables (reference) =================
+let refN=7;
+function renderRef(){
+  const box=$("refChips"); box.innerHTML="";
+  for(let i=1;i<=N;i++){ const b=document.createElement("button"); b.className="chip"+(i===refN&&$("refChart").hidden?" cur":""); b.textContent=i;
+    b.setAttribute("aria-label","Show the "+i+" times table");
+    b.addEventListener("click",()=>{ refN=i; $("refChart").hidden=true; $("refTable").hidden=false; renderRef(); }); box.appendChild(b); }
+  $("refTitle").textContent=`The ${refN} times table`;
+  $("refTip").innerHTML="💡 "+TABLE_TIPS[refN];
+  $("refFacts").innerHTML=Array.from({length:N},(_,i)=>`<div><span>${refN} × ${i+1}</span><span>${refN*(i+1)}</span></div>`).join("");
+}
+function buildChart(){
+  const t=$("chart"); let h="<tr><th aria-label='times'>×</th>"+Array.from({length:N},(_,i)=>`<th data-c="${i+1}">${i+1}</th>`).join("")+"</tr>";
+  for(let r=1;r<=N;r++){ h+=`<tr><th data-r="${r}">${r}</th>`; for(let c=1;c<=N;c++) h+=`<td data-r="${r}" data-c="${c}" class="${r===c?"sq":""}">${r*c}</td>`; h+="</tr>"; }
+  t.innerHTML=h;
+  t.addEventListener("click",e=>{
+    const el=e.target.closest("td,th"); if(!el) return;
+    const r=+el.dataset.r||0, c=+el.dataset.c||0;
+    t.querySelectorAll("td").forEach(td=>{ const tr=+td.dataset.r, tc=+td.dataset.c;
+      td.classList.toggle("hl",(r&&tr===r)||(c&&tc===c)); td.classList.toggle("pick",r&&c&&tr===r&&tc===c); });
+    $("gridTip").innerHTML=r&&c?`${r} × ${c} = <span style="color:var(--yellow)">${r*c}</span>`:r?`The ${r} row`:`The ${c} column`;
+  });
+}
+$("chartBtn").addEventListener("click",()=>{ $("refChart").hidden=false; $("refTable").hidden=true; renderRef(); });
+
+// ================= Progress =================
+function renderProgress(){
+  const t=$("progGrid"); let h="<tr><th>×</th>"+Array.from({length:N},(_,i)=>`<th>${i+1}</th>`).join("")+"</tr>";
+  for(let r=1;r<=N;r++){ h+=`<tr><th>${r}</th>`; for(let c=1;c<=N;c++){ const s=P.pairs[key(r,c)]; h+=`<td class="b${s?s.box:0}">${r*c}</td>`; } h+="</tr>"; }
+  t.innerHTML=h;
+  const all=[]; for(let a=1;a<=N;a++) for(let b=a;b<=N;b++) all.push(key(a,b));
+  const tried=all.filter(k=>P.pairs[k]&&(P.pairs[k].right+P.pairs[k].wrong)>0).length, mastered=all.filter(k=>P.pairs[k]&&P.pairs[k].box>=4).length;
+  $("progSummary").textContent=`${mastered} of ${all.length} facts are green so far, and you've tried ${tried}. Each square turns greener every time you get it right.`;
+}
+// in-page confirm (browser pop-ups don't work everywhere)
+function restoreReset(){ $("resetArea").innerHTML=`<button class="big alt" id="resetBtn">Reset progress</button>`; bindReset(); }
+function bindReset(){ $("resetBtn").onclick=()=>{ $("resetArea").innerHTML=`<span style="font-weight:700">Clear all stars?</span><button class="big" id="resetYes" style="background:var(--red);color:#3a0000">Yes, clear</button><button class="big alt" id="resetNo">Keep</button>`;
+  $("resetYes").onclick=()=>{ P.pairs={}; save(); renderProgress(); renderPick(); restoreReset(); }; $("resetNo").onclick=restoreReset; }; }
+
+renderPick(); buildChart(); renderRef(); bindReset();
+window.__tt={get R(){return R},P,press,startRound,poolKeys,st,tipFor,key};
+})();
+</script>
+</body>
+</html>

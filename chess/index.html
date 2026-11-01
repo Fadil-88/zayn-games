@@ -1,0 +1,2254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Zayn's Chess">
+<meta name="theme-color" content="#2f7ae5">
+<link rel="icon" type="image/png" sizes="64x64" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAADFElEQVR4XmNkIAHoVz39T4LyAQMX26QZibWcoEK9yidDwtO4wKV2Gbx+xCupV/F4SHseBi51yOL0J1YJvfJHw8Lj6OBSpxyGfzEEdMseDkvPw8DlLnkUP6NwdEsfDGvPwwOhWwHubxbUZDIi/I8C4CGhU3JvRPn+So8S2O9gQqf47ojyPAxc6VVmhGSB/yPS/2AADoD/IzgAGLULbo3c6IekgBHtfwaWkZz8ISmARvn/6kQNrP0T7fwbWMUHCtAsAHACGgU4uYCF3u6ht32EAKNm9lWqlYLXpmgRsg8n0Mq5RrZeSsAgqgWoFg8kgUFTCwxUbcSokXmJoqC/Pk0Xa4jLabvCxR9d3U1SrGhmXSZJPSWA/rUAMYCOJeWgyQLIgJ7ZgVE9/TzJWeDGDANi4pEqQCPjAlXMwQUGZxZATQ60DQB6JjdyAK3dR3QKuDnbmBz3Uw5oXCASHQADBmgdALROYpQCWruPqk1hteRTWP17a64ZBeFA40KQqkmMFsmVFmYiAapmAVokV1qYiRIAxKYw1YQTJCXj2wssSFKPE9A2B4zWAlTNArQAtM8CVExjdxZZ0yAMaJsHqFsL0AIMpVqAFoD2WYDGIUwxoLH7RrMArZMYpYDW7mNUjNhHUTF7b7kjpX4kGihF7idaLbFg8GcBZECD8mDQZwFU/1OUWLECRoXQ3SSben+VC3bT6AgM5iPmHUDg4/ZysmwfWlkAHyAzdbD8p3FTk9rgc7c82MjD6AabpYBFdE/NJsnK4ZMCYIDElMAETgCk4gECsNjHBy6bp5HknyFVCxALSGk8kZUF5AO3E+sWqoIrVkQaR0I2ICsABj0gIQCYQLXAUIHaR6cRDHuQGlL8w/R4ow8jOMSGCiYESPAHyO9DbrG09uEpBIKAtIbt6GJpWHDKeG8gLeiGOHiyNQCxYQIeCF7rR0QgPNkWiH3P0FDrF1ADYGybk/ZcO6xTwdPtwbi3zcGAtMeaYRkIT3eEEN44iQyk3FcPi4B4tjMUw+MwgFMCBqTcVg3pQHi2K4z8zdPoYKgEBiFPIwMApU8KyK/FzycAAAAASUVORK5CYII=">
+<link rel="icon" type="image/png" sizes="192x192" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<!-- PLAY COUNTER: GoatCounter site zayngames -->
+<script data-goatcounter="https://zayngames.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px system-ui,sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Zayn's Chess</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;700;800&family=Nunito:wght@500;700&display=swap">
+<script>
+/*
+ * Copyright (c) 2020, Jeff Hlywa (jhlywa@gmail.com)
+ * All rights reserved.
+ *
+ * Redistribution and use in source and binary forms, with or without
+ * modification, are permitted provided that the following conditions are met:
+ *
+ * 1. Redistributions of source code must retain the above copyright notice,
+ *    this list of conditions and the following disclaimer.
+ * 2. Redistributions in binary form must reproduce the above copyright notice,
+ *    this list of conditions and the following disclaimer in the documentation
+ *    and/or other materials provided with the distribution.
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+ * AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+ * IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
+ * ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
+ * LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+ * CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF
+ * SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS
+ * INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
+ * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE)
+ * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
+ * POSSIBILITY OF SUCH DAMAGE.
+ *
+ *----------------------------------------------------------------------------*/
+
+/* minified license below  */
+
+/* @license
+ * Copyright (c) 2018, Jeff Hlywa (jhlywa@gmail.com)
+ * Released under the BSD license
+ * https://github.com/jhlywa/chess.js/blob/master/LICENSE
+ */
+
+var Chess = function(fen) {
+  var BLACK = 'b'
+  var WHITE = 'w'
+
+  var EMPTY = -1
+
+  var PAWN = 'p'
+  var KNIGHT = 'n'
+  var BISHOP = 'b'
+  var ROOK = 'r'
+  var QUEEN = 'q'
+  var KING = 'k'
+
+  var SYMBOLS = 'pnbrqkPNBRQK'
+
+  var DEFAULT_POSITION =
+    'rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1'
+
+  var POSSIBLE_RESULTS = ['1-0', '0-1', '1/2-1/2', '*']
+
+  var PAWN_OFFSETS = {
+    b: [16, 32, 17, 15],
+    w: [-16, -32, -17, -15]
+  }
+
+  var PIECE_OFFSETS = {
+    n: [-18, -33, -31, -14, 18, 33, 31, 14],
+    b: [-17, -15, 17, 15],
+    r: [-16, 1, 16, -1],
+    q: [-17, -16, -15, 1, 17, 16, 15, -1],
+    k: [-17, -16, -15, 1, 17, 16, 15, -1]
+  }
+
+  // prettier-ignore
+  var ATTACKS = [
+    20, 0, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0, 0,20, 0,
+     0,20, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0,20, 0, 0,
+     0, 0,20, 0, 0, 0, 0, 24,  0, 0, 0, 0,20, 0, 0, 0,
+     0, 0, 0,20, 0, 0, 0, 24,  0, 0, 0,20, 0, 0, 0, 0,
+     0, 0, 0, 0,20, 0, 0, 24,  0, 0,20, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0,20, 2, 24,  2,20, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0, 2,53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+    24,24,24,24,24,24,56,  0, 56,24,24,24,24,24,24, 0,
+     0, 0, 0, 0, 0, 2,53, 56, 53, 2, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0, 0,20, 2, 24,  2,20, 0, 0, 0, 0, 0, 0,
+     0, 0, 0, 0,20, 0, 0, 24,  0, 0,20, 0, 0, 0, 0, 0,
+     0, 0, 0,20, 0, 0, 0, 24,  0, 0, 0,20, 0, 0, 0, 0,
+     0, 0,20, 0, 0, 0, 0, 24,  0, 0, 0, 0,20, 0, 0, 0,
+     0,20, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0,20, 0, 0,
+    20, 0, 0, 0, 0, 0, 0, 24,  0, 0, 0, 0, 0, 0,20
+  ];
+
+  // prettier-ignore
+  var RAYS = [
+     17,  0,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0,  0, 15, 0,
+      0, 17,  0,  0,  0,  0,  0, 16,  0,  0,  0,  0,  0, 15,  0, 0,
+      0,  0, 17,  0,  0,  0,  0, 16,  0,  0,  0,  0, 15,  0,  0, 0,
+      0,  0,  0, 17,  0,  0,  0, 16,  0,  0,  0, 15,  0,  0,  0, 0,
+      0,  0,  0,  0, 17,  0,  0, 16,  0,  0, 15,  0,  0,  0,  0, 0,
+      0,  0,  0,  0,  0, 17,  0, 16,  0, 15,  0,  0,  0,  0,  0, 0,
+      0,  0,  0,  0,  0,  0, 17, 16, 15,  0,  0,  0,  0,  0,  0, 0,
+      1,  1,  1,  1,  1,  1,  1,  0, -1, -1,  -1,-1, -1, -1, -1, 0,
+      0,  0,  0,  0,  0,  0,-15,-16,-17,  0,  0,  0,  0,  0,  0, 0,
+      0,  0,  0,  0,  0,-15,  0,-16,  0,-17,  0,  0,  0,  0,  0, 0,
+      0,  0,  0,  0,-15,  0,  0,-16,  0,  0,-17,  0,  0,  0,  0, 0,
+      0,  0,  0,-15,  0,  0,  0,-16,  0,  0,  0,-17,  0,  0,  0, 0,
+      0,  0,-15,  0,  0,  0,  0,-16,  0,  0,  0,  0,-17,  0,  0, 0,
+      0,-15,  0,  0,  0,  0,  0,-16,  0,  0,  0,  0,  0,-17,  0, 0,
+    -15,  0,  0,  0,  0,  0,  0,-16,  0,  0,  0,  0,  0,  0,-17
+  ];
+
+  var SHIFTS = { p: 0, n: 1, b: 2, r: 3, q: 4, k: 5 }
+
+  var FLAGS = {
+    NORMAL: 'n',
+    CAPTURE: 'c',
+    BIG_PAWN: 'b',
+    EP_CAPTURE: 'e',
+    PROMOTION: 'p',
+    KSIDE_CASTLE: 'k',
+    QSIDE_CASTLE: 'q'
+  }
+
+  var BITS = {
+    NORMAL: 1,
+    CAPTURE: 2,
+    BIG_PAWN: 4,
+    EP_CAPTURE: 8,
+    PROMOTION: 16,
+    KSIDE_CASTLE: 32,
+    QSIDE_CASTLE: 64
+  }
+
+  var RANK_1 = 7
+  var RANK_2 = 6
+  var RANK_3 = 5
+  var RANK_4 = 4
+  var RANK_5 = 3
+  var RANK_6 = 2
+  var RANK_7 = 1
+  var RANK_8 = 0
+
+  // prettier-ignore
+  var SQUARES = {
+    a8:   0, b8:   1, c8:   2, d8:   3, e8:   4, f8:   5, g8:   6, h8:   7,
+    a7:  16, b7:  17, c7:  18, d7:  19, e7:  20, f7:  21, g7:  22, h7:  23,
+    a6:  32, b6:  33, c6:  34, d6:  35, e6:  36, f6:  37, g6:  38, h6:  39,
+    a5:  48, b5:  49, c5:  50, d5:  51, e5:  52, f5:  53, g5:  54, h5:  55,
+    a4:  64, b4:  65, c4:  66, d4:  67, e4:  68, f4:  69, g4:  70, h4:  71,
+    a3:  80, b3:  81, c3:  82, d3:  83, e3:  84, f3:  85, g3:  86, h3:  87,
+    a2:  96, b2:  97, c2:  98, d2:  99, e2: 100, f2: 101, g2: 102, h2: 103,
+    a1: 112, b1: 113, c1: 114, d1: 115, e1: 116, f1: 117, g1: 118, h1: 119
+  };
+
+  var ROOKS = {
+    w: [
+      { square: SQUARES.a1, flag: BITS.QSIDE_CASTLE },
+      { square: SQUARES.h1, flag: BITS.KSIDE_CASTLE }
+    ],
+    b: [
+      { square: SQUARES.a8, flag: BITS.QSIDE_CASTLE },
+      { square: SQUARES.h8, flag: BITS.KSIDE_CASTLE }
+    ]
+  }
+
+  var board = new Array(128)
+  var kings = { w: EMPTY, b: EMPTY }
+  var turn = WHITE
+  var castling = { w: 0, b: 0 }
+  var ep_square = EMPTY
+  var half_moves = 0
+  var move_number = 1
+  var history = []
+  var header = {}
+
+  /* if the user passes in a fen string, load it, else default to
+   * starting position
+   */
+  if (typeof fen === 'undefined') {
+    load(DEFAULT_POSITION)
+  } else {
+    load(fen)
+  }
+
+  function clear(keep_headers) {
+    if (typeof keep_headers === 'undefined') {
+      keep_headers = false
+    }
+
+    board = new Array(128)
+    kings = { w: EMPTY, b: EMPTY }
+    turn = WHITE
+    castling = { w: 0, b: 0 }
+    ep_square = EMPTY
+    half_moves = 0
+    move_number = 1
+    history = []
+    if (!keep_headers) header = {}
+    update_setup(generate_fen())
+  }
+
+  function reset() {
+    load(DEFAULT_POSITION)
+  }
+
+  function load(fen, keep_headers) {
+    if (typeof keep_headers === 'undefined') {
+      keep_headers = false
+    }
+
+    var tokens = fen.split(/\s+/)
+    var position = tokens[0]
+    var square = 0
+
+    if (!validate_fen(fen).valid) {
+      return false
+    }
+
+    clear(keep_headers)
+
+    for (var i = 0; i < position.length; i++) {
+      var piece = position.charAt(i)
+
+      if (piece === '/') {
+        square += 8
+      } else if (is_digit(piece)) {
+        square += parseInt(piece, 10)
+      } else {
+        var color = piece < 'a' ? WHITE : BLACK
+        put({ type: piece.toLowerCase(), color: color }, algebraic(square))
+        square++
+      }
+    }
+
+    turn = tokens[1]
+
+    if (tokens[2].indexOf('K') > -1) {
+      castling.w |= BITS.KSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('Q') > -1) {
+      castling.w |= BITS.QSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('k') > -1) {
+      castling.b |= BITS.KSIDE_CASTLE
+    }
+    if (tokens[2].indexOf('q') > -1) {
+      castling.b |= BITS.QSIDE_CASTLE
+    }
+
+    ep_square = tokens[3] === '-' ? EMPTY : SQUARES[tokens[3]]
+    half_moves = parseInt(tokens[4], 10)
+    move_number = parseInt(tokens[5], 10)
+
+    update_setup(generate_fen())
+
+    return true
+  }
+
+  /* TODO: this function is pretty much crap - it validates structure but
+   * completely ignores content (e.g. doesn't verify that each side has a king)
+   * ... we should rewrite this, and ditch the silly error_number field while
+   * we're at it
+   */
+  function validate_fen(fen) {
+    var errors = {
+      0: 'No errors.',
+      1: 'FEN string must contain six space-delimited fields.',
+      2: '6th field (move number) must be a positive integer.',
+      3: '5th field (half move counter) must be a non-negative integer.',
+      4: '4th field (en-passant square) is invalid.',
+      5: '3rd field (castling availability) is invalid.',
+      6: '2nd field (side to move) is invalid.',
+      7: "1st field (piece positions) does not contain 8 '/'-delimited rows.",
+      8: '1st field (piece positions) is invalid [consecutive numbers].',
+      9: '1st field (piece positions) is invalid [invalid piece].',
+      10: '1st field (piece positions) is invalid [row too large].',
+      11: 'Illegal en-passant square'
+    }
+
+    /* 1st criterion: 6 space-seperated fields? */
+    var tokens = fen.split(/\s+/)
+    if (tokens.length !== 6) {
+      return { valid: false, error_number: 1, error: errors[1] }
+    }
+
+    /* 2nd criterion: move number field is a integer value > 0? */
+    if (isNaN(tokens[5]) || parseInt(tokens[5], 10) <= 0) {
+      return { valid: false, error_number: 2, error: errors[2] }
+    }
+
+    /* 3rd criterion: half move counter is an integer >= 0? */
+    if (isNaN(tokens[4]) || parseInt(tokens[4], 10) < 0) {
+      return { valid: false, error_number: 3, error: errors[3] }
+    }
+
+    /* 4th criterion: 4th field is a valid e.p.-string? */
+    if (!/^(-|[abcdefgh][36])$/.test(tokens[3])) {
+      return { valid: false, error_number: 4, error: errors[4] }
+    }
+
+    /* 5th criterion: 3th field is a valid castle-string? */
+    if (!/^(KQ?k?q?|Qk?q?|kq?|q|-)$/.test(tokens[2])) {
+      return { valid: false, error_number: 5, error: errors[5] }
+    }
+
+    /* 6th criterion: 2nd field is "w" (white) or "b" (black)? */
+    if (!/^(w|b)$/.test(tokens[1])) {
+      return { valid: false, error_number: 6, error: errors[6] }
+    }
+
+    /* 7th criterion: 1st field contains 8 rows? */
+    var rows = tokens[0].split('/')
+    if (rows.length !== 8) {
+      return { valid: false, error_number: 7, error: errors[7] }
+    }
+
+    /* 8th criterion: every row is valid? */
+    for (var i = 0; i < rows.length; i++) {
+      /* check for right sum of fields AND not two numbers in succession */
+      var sum_fields = 0
+      var previous_was_number = false
+
+      for (var k = 0; k < rows[i].length; k++) {
+        if (!isNaN(rows[i][k])) {
+          if (previous_was_number) {
+            return { valid: false, error_number: 8, error: errors[8] }
+          }
+          sum_fields += parseInt(rows[i][k], 10)
+          previous_was_number = true
+        } else {
+          if (!/^[prnbqkPRNBQK]$/.test(rows[i][k])) {
+            return { valid: false, error_number: 9, error: errors[9] }
+          }
+          sum_fields += 1
+          previous_was_number = false
+        }
+      }
+      if (sum_fields !== 8) {
+        return { valid: false, error_number: 10, error: errors[10] }
+      }
+    }
+
+    if (
+      (tokens[3][1] == '3' && tokens[1] == 'w') ||
+      (tokens[3][1] == '6' && tokens[1] == 'b')
+    ) {
+      return { valid: false, error_number: 11, error: errors[11] }
+    }
+
+    /* everything's okay! */
+    return { valid: true, error_number: 0, error: errors[0] }
+  }
+
+  function generate_fen() {
+    var empty = 0
+    var fen = ''
+
+    for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+      if (board[i] == null) {
+        empty++
+      } else {
+        if (empty > 0) {
+          fen += empty
+          empty = 0
+        }
+        var color = board[i].color
+        var piece = board[i].type
+
+        fen += color === WHITE ? piece.toUpperCase() : piece.toLowerCase()
+      }
+
+      if ((i + 1) & 0x88) {
+        if (empty > 0) {
+          fen += empty
+        }
+
+        if (i !== SQUARES.h1) {
+          fen += '/'
+        }
+
+        empty = 0
+        i += 8
+      }
+    }
+
+    var cflags = ''
+    if (castling[WHITE] & BITS.KSIDE_CASTLE) {
+      cflags += 'K'
+    }
+    if (castling[WHITE] & BITS.QSIDE_CASTLE) {
+      cflags += 'Q'
+    }
+    if (castling[BLACK] & BITS.KSIDE_CASTLE) {
+      cflags += 'k'
+    }
+    if (castling[BLACK] & BITS.QSIDE_CASTLE) {
+      cflags += 'q'
+    }
+
+    /* do we have an empty castling flag? */
+    cflags = cflags || '-'
+    var epflags = ep_square === EMPTY ? '-' : algebraic(ep_square)
+
+    return [fen, turn, cflags, epflags, half_moves, move_number].join(' ')
+  }
+
+  function set_header(args) {
+    for (var i = 0; i < args.length; i += 2) {
+      if (typeof args[i] === 'string' && typeof args[i + 1] === 'string') {
+        header[args[i]] = args[i + 1]
+      }
+    }
+    return header
+  }
+
+  /* called when the initial board setup is changed with put() or remove().
+   * modifies the SetUp and FEN properties of the header object.  if the FEN is
+   * equal to the default position, the SetUp and FEN are deleted
+   * the setup is only updated if history.length is zero, ie moves haven't been
+   * made.
+   */
+  function update_setup(fen) {
+    if (history.length > 0) return
+
+    if (fen !== DEFAULT_POSITION) {
+      header['SetUp'] = '1'
+      header['FEN'] = fen
+    } else {
+      delete header['SetUp']
+      delete header['FEN']
+    }
+  }
+
+  function get(square) {
+    var piece = board[SQUARES[square]]
+    return piece ? { type: piece.type, color: piece.color } : null
+  }
+
+  function put(piece, square) {
+    /* check for valid piece object */
+    if (!('type' in piece && 'color' in piece)) {
+      return false
+    }
+
+    /* check for piece */
+    if (SYMBOLS.indexOf(piece.type.toLowerCase()) === -1) {
+      return false
+    }
+
+    /* check for valid square */
+    if (!(square in SQUARES)) {
+      return false
+    }
+
+    var sq = SQUARES[square]
+
+    /* don't let the user place more than one king */
+    if (
+      piece.type == KING &&
+      !(kings[piece.color] == EMPTY || kings[piece.color] == sq)
+    ) {
+      return false
+    }
+
+    board[sq] = { type: piece.type, color: piece.color }
+    if (piece.type === KING) {
+      kings[piece.color] = sq
+    }
+
+    update_setup(generate_fen())
+
+    return true
+  }
+
+  function remove(square) {
+    var piece = get(square)
+    board[SQUARES[square]] = null
+    if (piece && piece.type === KING) {
+      kings[piece.color] = EMPTY
+    }
+
+    update_setup(generate_fen())
+
+    return piece
+  }
+
+  function build_move(board, from, to, flags, promotion) {
+    var move = {
+      color: turn,
+      from: from,
+      to: to,
+      flags: flags,
+      piece: board[from].type
+    }
+
+    if (promotion) {
+      move.flags |= BITS.PROMOTION
+      move.promotion = promotion
+    }
+
+    if (board[to]) {
+      move.captured = board[to].type
+    } else if (flags & BITS.EP_CAPTURE) {
+      move.captured = PAWN
+    }
+    return move
+  }
+
+  function generate_moves(options) {
+    function add_move(board, moves, from, to, flags) {
+      /* if pawn promotion */
+      if (
+        board[from].type === PAWN &&
+        (rank(to) === RANK_8 || rank(to) === RANK_1)
+      ) {
+        var pieces = [QUEEN, ROOK, BISHOP, KNIGHT]
+        for (var i = 0, len = pieces.length; i < len; i++) {
+          moves.push(build_move(board, from, to, flags, pieces[i]))
+        }
+      } else {
+        moves.push(build_move(board, from, to, flags))
+      }
+    }
+
+    var moves = []
+    var us = turn
+    var them = swap_color(us)
+    var second_rank = { b: RANK_7, w: RANK_2 }
+
+    var first_sq = SQUARES.a8
+    var last_sq = SQUARES.h1
+    var single_square = false
+
+    /* do we want legal moves? */
+    var legal =
+      typeof options !== 'undefined' && 'legal' in options
+        ? options.legal
+        : true
+
+    /* are we generating moves for a single square? */
+    if (typeof options !== 'undefined' && 'square' in options) {
+      if (options.square in SQUARES) {
+        first_sq = last_sq = SQUARES[options.square]
+        single_square = true
+      } else {
+        /* invalid square */
+        return []
+      }
+    }
+
+    for (var i = first_sq; i <= last_sq; i++) {
+      /* did we run off the end of the board */
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      var piece = board[i]
+      if (piece == null || piece.color !== us) {
+        continue
+      }
+
+      if (piece.type === PAWN) {
+        /* single square, non-capturing */
+        var square = i + PAWN_OFFSETS[us][0]
+        if (board[square] == null) {
+          add_move(board, moves, i, square, BITS.NORMAL)
+
+          /* double square */
+          var square = i + PAWN_OFFSETS[us][1]
+          if (second_rank[us] === rank(i) && board[square] == null) {
+            add_move(board, moves, i, square, BITS.BIG_PAWN)
+          }
+        }
+
+        /* pawn captures */
+        for (j = 2; j < 4; j++) {
+          var square = i + PAWN_OFFSETS[us][j]
+          if (square & 0x88) continue
+
+          if (board[square] != null && board[square].color === them) {
+            add_move(board, moves, i, square, BITS.CAPTURE)
+          } else if (square === ep_square) {
+            add_move(board, moves, i, ep_square, BITS.EP_CAPTURE)
+          }
+        }
+      } else {
+        for (var j = 0, len = PIECE_OFFSETS[piece.type].length; j < len; j++) {
+          var offset = PIECE_OFFSETS[piece.type][j]
+          var square = i
+
+          while (true) {
+            square += offset
+            if (square & 0x88) break
+
+            if (board[square] == null) {
+              add_move(board, moves, i, square, BITS.NORMAL)
+            } else {
+              if (board[square].color === us) break
+              add_move(board, moves, i, square, BITS.CAPTURE)
+              break
+            }
+
+            /* break, if knight or king */
+            if (piece.type === 'n' || piece.type === 'k') break
+          }
+        }
+      }
+    }
+
+    /* check for castling if: a) we're generating all moves, or b) we're doing
+     * single square move generation on the king's square
+     */
+    if (!single_square || last_sq === kings[us]) {
+      /* king-side castling */
+      if (castling[us] & BITS.KSIDE_CASTLE) {
+        var castling_from = kings[us]
+        var castling_to = castling_from + 2
+
+        if (
+          board[castling_from + 1] == null &&
+          board[castling_to] == null &&
+          !attacked(them, kings[us]) &&
+          !attacked(them, castling_from + 1) &&
+          !attacked(them, castling_to)
+        ) {
+          add_move(board, moves, kings[us], castling_to, BITS.KSIDE_CASTLE)
+        }
+      }
+
+      /* queen-side castling */
+      if (castling[us] & BITS.QSIDE_CASTLE) {
+        var castling_from = kings[us]
+        var castling_to = castling_from - 2
+
+        if (
+          board[castling_from - 1] == null &&
+          board[castling_from - 2] == null &&
+          board[castling_from - 3] == null &&
+          !attacked(them, kings[us]) &&
+          !attacked(them, castling_from - 1) &&
+          !attacked(them, castling_to)
+        ) {
+          add_move(board, moves, kings[us], castling_to, BITS.QSIDE_CASTLE)
+        }
+      }
+    }
+
+    /* return all pseudo-legal moves (this includes moves that allow the king
+     * to be captured)
+     */
+    if (!legal) {
+      return moves
+    }
+
+    /* filter out illegal moves */
+    var legal_moves = []
+    for (var i = 0, len = moves.length; i < len; i++) {
+      make_move(moves[i])
+      if (!king_attacked(us)) {
+        legal_moves.push(moves[i])
+      }
+      undo_move()
+    }
+
+    return legal_moves
+  }
+
+  /* convert a move from 0x88 coordinates to Standard Algebraic Notation
+   * (SAN)
+   *
+   * @param {boolean} sloppy Use the sloppy SAN generator to work around over
+   * disambiguation bugs in Fritz and Chessbase.  See below:
+   *
+   * r1bqkbnr/ppp2ppp/2n5/1B1pP3/4P3/8/PPPP2PP/RNBQK1NR b KQkq - 2 4
+   * 4. ... Nge7 is overly disambiguated because the knight on c6 is pinned
+   * 4. ... Ne7 is technically the valid SAN
+   */
+  function move_to_san(move, sloppy) {
+    var output = ''
+
+    if (move.flags & BITS.KSIDE_CASTLE) {
+      output = 'O-O'
+    } else if (move.flags & BITS.QSIDE_CASTLE) {
+      output = 'O-O-O'
+    } else {
+      var disambiguator = get_disambiguator(move, sloppy)
+
+      if (move.piece !== PAWN) {
+        output += move.piece.toUpperCase() + disambiguator
+      }
+
+      if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+        if (move.piece === PAWN) {
+          output += algebraic(move.from)[0]
+        }
+        output += 'x'
+      }
+
+      output += algebraic(move.to)
+
+      if (move.flags & BITS.PROMOTION) {
+        output += '=' + move.promotion.toUpperCase()
+      }
+    }
+
+    make_move(move)
+    if (in_check()) {
+      if (in_checkmate()) {
+        output += '#'
+      } else {
+        output += '+'
+      }
+    }
+    undo_move()
+
+    return output
+  }
+
+  // parses all of the decorators out of a SAN string
+  function stripped_san(move) {
+    return move.replace(/=/, '').replace(/[+#]?[?!]*$/, '')
+  }
+
+  function attacked(color, square) {
+    for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+      /* did we run off the end of the board */
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      /* if empty square or wrong color */
+      if (board[i] == null || board[i].color !== color) continue
+
+      var piece = board[i]
+      var difference = i - square
+      var index = difference + 119
+
+      if (ATTACKS[index] & (1 << SHIFTS[piece.type])) {
+        if (piece.type === PAWN) {
+          if (difference > 0) {
+            if (piece.color === WHITE) return true
+          } else {
+            if (piece.color === BLACK) return true
+          }
+          continue
+        }
+
+        /* if the piece is a knight or a king */
+        if (piece.type === 'n' || piece.type === 'k') return true
+
+        var offset = RAYS[index]
+        var j = i + offset
+
+        var blocked = false
+        while (j !== square) {
+          if (board[j] != null) {
+            blocked = true
+            break
+          }
+          j += offset
+        }
+
+        if (!blocked) return true
+      }
+    }
+
+    return false
+  }
+
+  function king_attacked(color) {
+    return attacked(swap_color(color), kings[color])
+  }
+
+  function in_check() {
+    return king_attacked(turn)
+  }
+
+  function in_checkmate() {
+    return in_check() && generate_moves().length === 0
+  }
+
+  function in_stalemate() {
+    return !in_check() && generate_moves().length === 0
+  }
+
+  function insufficient_material() {
+    var pieces = {}
+    var bishops = []
+    var num_pieces = 0
+    var sq_color = 0
+
+    for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+      sq_color = (sq_color + 1) % 2
+      if (i & 0x88) {
+        i += 7
+        continue
+      }
+
+      var piece = board[i]
+      if (piece) {
+        pieces[piece.type] = piece.type in pieces ? pieces[piece.type] + 1 : 1
+        if (piece.type === BISHOP) {
+          bishops.push(sq_color)
+        }
+        num_pieces++
+      }
+    }
+
+    /* k vs. k */
+    if (num_pieces === 2) {
+      return true
+    } else if (
+      /* k vs. kn .... or .... k vs. kb */
+      num_pieces === 3 &&
+      (pieces[BISHOP] === 1 || pieces[KNIGHT] === 1)
+    ) {
+      return true
+    } else if (num_pieces === pieces[BISHOP] + 2) {
+      /* kb vs. kb where any number of bishops are all on the same color */
+      var sum = 0
+      var len = bishops.length
+      for (var i = 0; i < len; i++) {
+        sum += bishops[i]
+      }
+      if (sum === 0 || sum === len) {
+        return true
+      }
+    }
+
+    return false
+  }
+
+  function in_threefold_repetition() {
+    /* TODO: while this function is fine for casual use, a better
+     * implementation would use a Zobrist key (instead of FEN). the
+     * Zobrist key would be maintained in the make_move/undo_move functions,
+     * avoiding the costly that we do below.
+     */
+    var moves = []
+    var positions = {}
+    var repetition = false
+
+    while (true) {
+      var move = undo_move()
+      if (!move) break
+      moves.push(move)
+    }
+
+    while (true) {
+      /* remove the last two fields in the FEN string, they're not needed
+       * when checking for draw by rep */
+      var fen = generate_fen()
+        .split(' ')
+        .slice(0, 4)
+        .join(' ')
+
+      /* has the position occurred three or move times */
+      positions[fen] = fen in positions ? positions[fen] + 1 : 1
+      if (positions[fen] >= 3) {
+        repetition = true
+      }
+
+      if (!moves.length) {
+        break
+      }
+      make_move(moves.pop())
+    }
+
+    return repetition
+  }
+
+  function push(move) {
+    history.push({
+      move: move,
+      kings: { b: kings.b, w: kings.w },
+      turn: turn,
+      castling: { b: castling.b, w: castling.w },
+      ep_square: ep_square,
+      half_moves: half_moves,
+      move_number: move_number
+    })
+  }
+
+  function make_move(move) {
+    var us = turn
+    var them = swap_color(us)
+    push(move)
+
+    board[move.to] = board[move.from]
+    board[move.from] = null
+
+    /* if ep capture, remove the captured pawn */
+    if (move.flags & BITS.EP_CAPTURE) {
+      if (turn === BLACK) {
+        board[move.to - 16] = null
+      } else {
+        board[move.to + 16] = null
+      }
+    }
+
+    /* if pawn promotion, replace with new piece */
+    if (move.flags & BITS.PROMOTION) {
+      board[move.to] = { type: move.promotion, color: us }
+    }
+
+    /* if we moved the king */
+    if (board[move.to].type === KING) {
+      kings[board[move.to].color] = move.to
+
+      /* if we castled, move the rook next to the king */
+      if (move.flags & BITS.KSIDE_CASTLE) {
+        var castling_to = move.to - 1
+        var castling_from = move.to + 1
+        board[castling_to] = board[castling_from]
+        board[castling_from] = null
+      } else if (move.flags & BITS.QSIDE_CASTLE) {
+        var castling_to = move.to + 1
+        var castling_from = move.to - 2
+        board[castling_to] = board[castling_from]
+        board[castling_from] = null
+      }
+
+      /* turn off castling */
+      castling[us] = ''
+    }
+
+    /* turn off castling if we move a rook */
+    if (castling[us]) {
+      for (var i = 0, len = ROOKS[us].length; i < len; i++) {
+        if (
+          move.from === ROOKS[us][i].square &&
+          castling[us] & ROOKS[us][i].flag
+        ) {
+          castling[us] ^= ROOKS[us][i].flag
+          break
+        }
+      }
+    }
+
+    /* turn off castling if we capture a rook */
+    if (castling[them]) {
+      for (var i = 0, len = ROOKS[them].length; i < len; i++) {
+        if (
+          move.to === ROOKS[them][i].square &&
+          castling[them] & ROOKS[them][i].flag
+        ) {
+          castling[them] ^= ROOKS[them][i].flag
+          break
+        }
+      }
+    }
+
+    /* if big pawn move, update the en passant square */
+    if (move.flags & BITS.BIG_PAWN) {
+      if (turn === 'b') {
+        ep_square = move.to - 16
+      } else {
+        ep_square = move.to + 16
+      }
+    } else {
+      ep_square = EMPTY
+    }
+
+    /* reset the 50 move counter if a pawn is moved or a piece is captured */
+    if (move.piece === PAWN) {
+      half_moves = 0
+    } else if (move.flags & (BITS.CAPTURE | BITS.EP_CAPTURE)) {
+      half_moves = 0
+    } else {
+      half_moves++
+    }
+
+    if (turn === BLACK) {
+      move_number++
+    }
+    turn = swap_color(turn)
+  }
+
+  function undo_move() {
+    var old = history.pop()
+    if (old == null) {
+      return null
+    }
+
+    var move = old.move
+    kings = old.kings
+    turn = old.turn
+    castling = old.castling
+    ep_square = old.ep_square
+    half_moves = old.half_moves
+    move_number = old.move_number
+
+    var us = turn
+    var them = swap_color(turn)
+
+    board[move.from] = board[move.to]
+    board[move.from].type = move.piece // to undo any promotions
+    board[move.to] = null
+
+    if (move.flags & BITS.CAPTURE) {
+      board[move.to] = { type: move.captured, color: them }
+    } else if (move.flags & BITS.EP_CAPTURE) {
+      var index
+      if (us === BLACK) {
+        index = move.to - 16
+      } else {
+        index = move.to + 16
+      }
+      board[index] = { type: PAWN, color: them }
+    }
+
+    if (move.flags & (BITS.KSIDE_CASTLE | BITS.QSIDE_CASTLE)) {
+      var castling_to, castling_from
+      if (move.flags & BITS.KSIDE_CASTLE) {
+        castling_to = move.to + 1
+        castling_from = move.to - 1
+      } else if (move.flags & BITS.QSIDE_CASTLE) {
+        castling_to = move.to - 2
+        castling_from = move.to + 1
+      }
+
+      board[castling_to] = board[castling_from]
+      board[castling_from] = null
+    }
+
+    return move
+  }
+
+  /* this function is used to uniquely identify ambiguous moves */
+  function get_disambiguator(move, sloppy) {
+    var moves = generate_moves({ legal: !sloppy })
+
+    var from = move.from
+    var to = move.to
+    var piece = move.piece
+
+    var ambiguities = 0
+    var same_rank = 0
+    var same_file = 0
+
+    for (var i = 0, len = moves.length; i < len; i++) {
+      var ambig_from = moves[i].from
+      var ambig_to = moves[i].to
+      var ambig_piece = moves[i].piece
+
+      /* if a move of the same piece type ends on the same to square, we'll
+       * need to add a disambiguator to the algebraic notation
+       */
+      if (piece === ambig_piece && from !== ambig_from && to === ambig_to) {
+        ambiguities++
+
+        if (rank(from) === rank(ambig_from)) {
+          same_rank++
+        }
+
+        if (file(from) === file(ambig_from)) {
+          same_file++
+        }
+      }
+    }
+
+    if (ambiguities > 0) {
+      /* if there exists a similar moving piece on the same rank and file as
+       * the move in question, use the square as the disambiguator
+       */
+      if (same_rank > 0 && same_file > 0) {
+        return algebraic(from)
+      } else if (same_file > 0) {
+        /* if the moving piece rests on the same file, use the rank symbol as the
+         * disambiguator
+         */
+        return algebraic(from).charAt(1)
+      } else {
+        /* else use the file symbol */
+        return algebraic(from).charAt(0)
+      }
+    }
+
+    return ''
+  }
+
+  function ascii() {
+    var s = '   +------------------------+\n'
+    for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+      /* display the rank */
+      if (file(i) === 0) {
+        s += ' ' + '87654321'[rank(i)] + ' |'
+      }
+
+      /* empty piece */
+      if (board[i] == null) {
+        s += ' . '
+      } else {
+        var piece = board[i].type
+        var color = board[i].color
+        var symbol = color === WHITE ? piece.toUpperCase() : piece.toLowerCase()
+        s += ' ' + symbol + ' '
+      }
+
+      if ((i + 1) & 0x88) {
+        s += '|\n'
+        i += 8
+      }
+    }
+    s += '   +------------------------+\n'
+    s += '     a  b  c  d  e  f  g  h\n'
+
+    return s
+  }
+
+  // convert a move from Standard Algebraic Notation (SAN) to 0x88 coordinates
+  function move_from_san(move, sloppy) {
+    // strip off any move decorations: e.g Nf3+?!
+    var clean_move = stripped_san(move)
+
+    // if we're using the sloppy parser run a regex to grab piece, to, and from
+    // this should parse invalid SAN like: Pe2-e4, Rc1c4, Qf3xf7
+    if (sloppy) {
+      var matches = clean_move.match(
+        /([pnbrqkPNBRQK])?([a-h][1-8])x?-?([a-h][1-8])([qrbnQRBN])?/
+      )
+      if (matches) {
+        var piece = matches[1]
+        var from = matches[2]
+        var to = matches[3]
+        var promotion = matches[4]
+      }
+    }
+
+    var moves = generate_moves()
+    for (var i = 0, len = moves.length; i < len; i++) {
+      // try the strict parser first, then the sloppy parser if requested
+      // by the user
+      if (
+        clean_move === stripped_san(move_to_san(moves[i])) ||
+        (sloppy && clean_move === stripped_san(move_to_san(moves[i], true)))
+      ) {
+        return moves[i]
+      } else {
+        if (
+          matches &&
+          (!piece || piece.toLowerCase() == moves[i].piece) &&
+          SQUARES[from] == moves[i].from &&
+          SQUARES[to] == moves[i].to &&
+          (!promotion || promotion.toLowerCase() == moves[i].promotion)
+        ) {
+          return moves[i]
+        }
+      }
+    }
+
+    return null
+  }
+
+  /*****************************************************************************
+   * UTILITY FUNCTIONS
+   ****************************************************************************/
+  function rank(i) {
+    return i >> 4
+  }
+
+  function file(i) {
+    return i & 15
+  }
+
+  function algebraic(i) {
+    var f = file(i),
+      r = rank(i)
+    return 'abcdefgh'.substring(f, f + 1) + '87654321'.substring(r, r + 1)
+  }
+
+  function swap_color(c) {
+    return c === WHITE ? BLACK : WHITE
+  }
+
+  function is_digit(c) {
+    return '0123456789'.indexOf(c) !== -1
+  }
+
+  /* pretty = external move object */
+  function make_pretty(ugly_move) {
+    var move = clone(ugly_move)
+    move.san = move_to_san(move, false)
+    move.to = algebraic(move.to)
+    move.from = algebraic(move.from)
+
+    var flags = ''
+
+    for (var flag in BITS) {
+      if (BITS[flag] & move.flags) {
+        flags += FLAGS[flag]
+      }
+    }
+    move.flags = flags
+
+    return move
+  }
+
+  function clone(obj) {
+    var dupe = obj instanceof Array ? [] : {}
+
+    for (var property in obj) {
+      if (typeof property === 'object') {
+        dupe[property] = clone(obj[property])
+      } else {
+        dupe[property] = obj[property]
+      }
+    }
+
+    return dupe
+  }
+
+  function trim(str) {
+    return str.replace(/^\s+|\s+$/g, '')
+  }
+
+  /*****************************************************************************
+   * DEBUGGING UTILITIES
+   ****************************************************************************/
+  function perft(depth) {
+    var moves = generate_moves({ legal: false })
+    var nodes = 0
+    var color = turn
+
+    for (var i = 0, len = moves.length; i < len; i++) {
+      make_move(moves[i])
+      if (!king_attacked(color)) {
+        if (depth - 1 > 0) {
+          var child_nodes = perft(depth - 1)
+          nodes += child_nodes
+        } else {
+          nodes++
+        }
+      }
+      undo_move()
+    }
+
+    return nodes
+  }
+
+  return {
+    /***************************************************************************
+     * PUBLIC CONSTANTS (is there a better way to do this?)
+     **************************************************************************/
+    WHITE: WHITE,
+    BLACK: BLACK,
+    PAWN: PAWN,
+    KNIGHT: KNIGHT,
+    BISHOP: BISHOP,
+    ROOK: ROOK,
+    QUEEN: QUEEN,
+    KING: KING,
+    SQUARES: (function() {
+      /* from the ECMA-262 spec (section 12.6.4):
+       * "The mechanics of enumerating the properties ... is
+       * implementation dependent"
+       * so: for (var sq in SQUARES) { keys.push(sq); } might not be
+       * ordered correctly
+       */
+      var keys = []
+      for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+        if (i & 0x88) {
+          i += 7
+          continue
+        }
+        keys.push(algebraic(i))
+      }
+      return keys
+    })(),
+    FLAGS: FLAGS,
+
+    /***************************************************************************
+     * PUBLIC API
+     **************************************************************************/
+    load: function(fen) {
+      return load(fen)
+    },
+
+    reset: function() {
+      return reset()
+    },
+
+    moves: function(options) {
+      /* The internal representation of a chess move is in 0x88 format, and
+       * not meant to be human-readable.  The code below converts the 0x88
+       * square coordinates to algebraic coordinates.  It also prunes an
+       * unnecessary move keys resulting from a verbose call.
+       */
+
+      var ugly_moves = generate_moves(options)
+      var moves = []
+
+      for (var i = 0, len = ugly_moves.length; i < len; i++) {
+        /* does the user want a full move object (most likely not), or just
+         * SAN
+         */
+        if (
+          typeof options !== 'undefined' &&
+          'verbose' in options &&
+          options.verbose
+        ) {
+          moves.push(make_pretty(ugly_moves[i]))
+        } else {
+          moves.push(move_to_san(ugly_moves[i], false))
+        }
+      }
+
+      return moves
+    },
+
+    in_check: function() {
+      return in_check()
+    },
+
+    in_checkmate: function() {
+      return in_checkmate()
+    },
+
+    in_stalemate: function() {
+      return in_stalemate()
+    },
+
+    in_draw: function() {
+      return (
+        half_moves >= 100 ||
+        in_stalemate() ||
+        insufficient_material() ||
+        in_threefold_repetition()
+      )
+    },
+
+    insufficient_material: function() {
+      return insufficient_material()
+    },
+
+    in_threefold_repetition: function() {
+      return in_threefold_repetition()
+    },
+
+    game_over: function() {
+      return (
+        half_moves >= 100 ||
+        in_checkmate() ||
+        in_stalemate() ||
+        insufficient_material() ||
+        in_threefold_repetition()
+      )
+    },
+
+    validate_fen: function(fen) {
+      return validate_fen(fen)
+    },
+
+    fen: function() {
+      return generate_fen()
+    },
+
+    board: function() {
+      var output = [],
+        row = []
+
+      for (var i = SQUARES.a8; i <= SQUARES.h1; i++) {
+        if (board[i] == null) {
+          row.push(null)
+        } else {
+          row.push({ type: board[i].type, color: board[i].color })
+        }
+        if ((i + 1) & 0x88) {
+          output.push(row)
+          row = []
+          i += 8
+        }
+      }
+
+      return output
+    },
+
+    pgn: function(options) {
+      /* using the specification from http://www.chessclub.com/help/PGN-spec
+       * example for html usage: .pgn({ max_width: 72, newline_char: "<br />" })
+       */
+      var newline =
+        typeof options === 'object' && typeof options.newline_char === 'string'
+          ? options.newline_char
+          : '\n'
+      var max_width =
+        typeof options === 'object' && typeof options.max_width === 'number'
+          ? options.max_width
+          : 0
+      var result = []
+      var header_exists = false
+
+      /* add the PGN header headerrmation */
+      for (var i in header) {
+        /* TODO: order of enumerated properties in header object is not
+         * guaranteed, see ECMA-262 spec (section 12.6.4)
+         */
+        result.push('[' + i + ' "' + header[i] + '"]' + newline)
+        header_exists = true
+      }
+
+      if (header_exists && history.length) {
+        result.push(newline)
+      }
+
+      /* pop all of history onto reversed_history */
+      var reversed_history = []
+      while (history.length > 0) {
+        reversed_history.push(undo_move())
+      }
+
+      var moves = []
+      var move_string = ''
+
+      /* build the list of moves.  a move_string looks like: "3. e3 e6" */
+      while (reversed_history.length > 0) {
+        var move = reversed_history.pop()
+
+        /* if the position started with black to move, start PGN with 1. ... */
+        if (!history.length && move.color === 'b') {
+          move_string = move_number + '. ...'
+        } else if (move.color === 'w') {
+          /* store the previous generated move_string if we have one */
+          if (move_string.length) {
+            moves.push(move_string)
+          }
+          move_string = move_number + '.'
+        }
+
+        move_string = move_string + ' ' + move_to_san(move, false)
+        make_move(move)
+      }
+
+      /* are there any other leftover moves? */
+      if (move_string.length) {
+        moves.push(move_string)
+      }
+
+      /* is there a result? */
+      if (typeof header.Result !== 'undefined') {
+        moves.push(header.Result)
+      }
+
+      /* history should be back to what is was before we started generating PGN,
+       * so join together moves
+       */
+      if (max_width === 0) {
+        return result.join('') + moves.join(' ')
+      }
+
+      /* wrap the PGN output at max_width */
+      var current_width = 0
+      for (var i = 0; i < moves.length; i++) {
+        /* if the current move will push past max_width */
+        if (current_width + moves[i].length > max_width && i !== 0) {
+          /* don't end the line with whitespace */
+          if (result[result.length - 1] === ' ') {
+            result.pop()
+          }
+
+          result.push(newline)
+          current_width = 0
+        } else if (i !== 0) {
+          result.push(' ')
+          current_width++
+        }
+        result.push(moves[i])
+        current_width += moves[i].length
+      }
+
+      return result.join('')
+    },
+
+    load_pgn: function(pgn, options) {
+      // allow the user to specify the sloppy move parser to work around over
+      // disambiguation bugs in Fritz and Chessbase
+      var sloppy =
+        typeof options !== 'undefined' && 'sloppy' in options
+          ? options.sloppy
+          : false
+
+      function mask(str) {
+        return str.replace(/\\/g, '\\')
+      }
+
+      function has_keys(object) {
+        for (var key in object) {
+          return true
+        }
+        return false
+      }
+
+      function parse_pgn_header(header, options) {
+        var newline_char =
+          typeof options === 'object' &&
+          typeof options.newline_char === 'string'
+            ? options.newline_char
+            : '\r?\n'
+        var header_obj = {}
+        var headers = header.split(new RegExp(mask(newline_char)))
+        var key = ''
+        var value = ''
+
+        for (var i = 0; i < headers.length; i++) {
+          key = headers[i].replace(/^\[([A-Z][A-Za-z]*)\s.*\]$/, '$1')
+          value = headers[i].replace(/^\[[A-Za-z]+\s"(.*)"\]$/, '$1')
+          if (trim(key).length > 0) {
+            header_obj[key] = value
+          }
+        }
+
+        return header_obj
+      }
+
+      var newline_char =
+        typeof options === 'object' && typeof options.newline_char === 'string'
+          ? options.newline_char
+          : '\r?\n'
+
+      // RegExp to split header. Takes advantage of the fact that header and movetext
+      // will always have a blank line between them (ie, two newline_char's).
+      // With default newline_char, will equal: /^(\[((?:\r?\n)|.)*\])(?:\r?\n){2}/
+      var header_regex = new RegExp(
+        '^(\\[((?:' +
+          mask(newline_char) +
+          ')|.)*\\])' +
+          '(?:' +
+          mask(newline_char) +
+          '){2}'
+      )
+
+      // If no header given, begin with moves.
+      var header_string = header_regex.test(pgn)
+        ? header_regex.exec(pgn)[1]
+        : ''
+
+      // Put the board in the starting position
+      reset()
+
+      /* parse PGN header */
+      var headers = parse_pgn_header(header_string, options)
+      for (var key in headers) {
+        set_header([key, headers[key]])
+      }
+
+      /* load the starting position indicated by [Setup '1'] and
+       * [FEN position] */
+      if (headers['SetUp'] === '1') {
+        if (!('FEN' in headers && load(headers['FEN'], true))) {
+          // second argument to load: don't clear the headers
+          return false
+        }
+      }
+
+      /* delete header to get the moves */
+      var ms = pgn
+        .replace(header_string, '')
+        .replace(new RegExp(mask(newline_char), 'g'), ' ')
+
+      /* delete comments */
+      ms = ms.replace(/(\{[^}]+\})+?/g, '')
+
+      /* delete recursive annotation variations */
+      var rav_regex = /(\([^\(\)]+\))+?/g
+      while (rav_regex.test(ms)) {
+        ms = ms.replace(rav_regex, '')
+      }
+
+      /* delete move numbers */
+      ms = ms.replace(/\d+\.(\.\.)?/g, '')
+
+      /* delete ... indicating black to move */
+      ms = ms.replace(/\.\.\./g, '')
+
+      /* delete numeric annotation glyphs */
+      ms = ms.replace(/\$\d+/g, '')
+
+      /* trim and get array of moves */
+      var moves = trim(ms).split(new RegExp(/\s+/))
+
+      /* delete empty entries */
+      moves = moves
+        .join(',')
+        .replace(/,,+/g, ',')
+        .split(',')
+      var move = ''
+
+      for (var half_move = 0; half_move < moves.length - 1; half_move++) {
+        move = move_from_san(moves[half_move], sloppy)
+
+        /* move not possible! (don't clear the board to examine to show the
+         * latest valid position)
+         */
+        if (move == null) {
+          return false
+        } else {
+          make_move(move)
+        }
+      }
+
+      /* examine last move */
+      move = moves[moves.length - 1]
+      if (POSSIBLE_RESULTS.indexOf(move) > -1) {
+        if (has_keys(header) && typeof header.Result === 'undefined') {
+          set_header(['Result', move])
+        }
+      } else {
+        move = move_from_san(move, sloppy)
+        if (move == null) {
+          return false
+        } else {
+          make_move(move)
+        }
+      }
+      return true
+    },
+
+    header: function() {
+      return set_header(arguments)
+    },
+
+    ascii: function() {
+      return ascii()
+    },
+
+    turn: function() {
+      return turn
+    },
+
+    move: function(move, options) {
+      /* The move function can be called with in the following parameters:
+       *
+       * .move('Nxb7')      <- where 'move' is a case-sensitive SAN string
+       *
+       * .move({ from: 'h7', <- where the 'move' is a move object (additional
+       *         to :'h8',      fields are ignored)
+       *         promotion: 'q',
+       *      })
+       */
+
+      // allow the user to specify the sloppy move parser to work around over
+      // disambiguation bugs in Fritz and Chessbase
+      var sloppy =
+        typeof options !== 'undefined' && 'sloppy' in options
+          ? options.sloppy
+          : false
+
+      var move_obj = null
+
+      if (typeof move === 'string') {
+        move_obj = move_from_san(move, sloppy)
+      } else if (typeof move === 'object') {
+        var moves = generate_moves()
+
+        /* convert the pretty move object to an ugly move object */
+        for (var i = 0, len = moves.length; i < len; i++) {
+          if (
+            move.from === algebraic(moves[i].from) &&
+            move.to === algebraic(moves[i].to) &&
+            (!('promotion' in moves[i]) ||
+              move.promotion === moves[i].promotion)
+          ) {
+            move_obj = moves[i]
+            break
+          }
+        }
+      }
+
+      /* failed to find move */
+      if (!move_obj) {
+        return null
+      }
+
+      /* need to make a copy of move because we can't generate SAN after the
+       * move is made
+       */
+      var pretty_move = make_pretty(move_obj)
+
+      make_move(move_obj)
+
+      return pretty_move
+    },
+
+    undo: function() {
+      var move = undo_move()
+      return move ? make_pretty(move) : null
+    },
+
+    clear: function() {
+      return clear()
+    },
+
+    put: function(piece, square) {
+      return put(piece, square)
+    },
+
+    get: function(square) {
+      return get(square)
+    },
+
+    remove: function(square) {
+      return remove(square)
+    },
+
+    perft: function(depth) {
+      return perft(depth)
+    },
+
+    square_color: function(square) {
+      if (square in SQUARES) {
+        var sq_0x88 = SQUARES[square]
+        return (rank(sq_0x88) + file(sq_0x88)) % 2 === 0 ? 'light' : 'dark'
+      }
+
+      return null
+    },
+
+    history: function(options) {
+      var reversed_history = []
+      var move_history = []
+      var verbose =
+        typeof options !== 'undefined' &&
+        'verbose' in options &&
+        options.verbose
+
+      while (history.length > 0) {
+        reversed_history.push(undo_move())
+      }
+
+      while (reversed_history.length > 0) {
+        var move = reversed_history.pop()
+        if (verbose) {
+          move_history.push(make_pretty(move))
+        } else {
+          move_history.push(move_to_san(move))
+        }
+        make_move(move)
+      }
+
+      return move_history
+    }
+  }
+}
+
+/* export Chess object if using node or any other CommonJS compatible
+ * environment */
+if (typeof exports !== 'undefined') exports.Chess = Chess
+/* export Chess object for any RequireJS compatible environment */
+if (typeof define !== 'undefined')
+  define(function() {
+    return Chess
+  })
+
+</script>
+<style>
+/* Layout: one centered column. Home → Openings menu → Board screen (talk bubble, move list, board with arrow overlay, buttons). */
+:root{
+  --bg:#eaf4ff; --panel:#ffffff; --fg:#1d2a44; --muted:#5a6a8a; --line:#d5e2f3;
+  --light:#fbe7c6; --dark:#c98a52; --shadow:rgba(40,150,80,.38); --dot:rgba(30,130,65,.75); --sel:#ffd84d; --last:rgba(255,216,77,.45); --check:#ff6b6b;
+  --accent:#2f7ae5; --accent-fg:#fff; --good:#2e9e5b; --bad:#e2533f; --pumpkin:#f28a1e; --star:#f5b400;
+  --display:"Baloo 2","Comic Sans MS",system-ui,sans-serif; --body:"Nunito",system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#141c2e; --panel:#1f2a42; --fg:#eef3ff; --muted:#a7b4d4; --line:#33415f;
+  --light:#e9d2ac; --dark:#a86d3c; --accent:#5b9bff; --accent-fg:#0d1424; --good:#4cc47e; --bad:#ff7a66; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --bg:#141c2e; --panel:#1f2a42; --fg:#eef3ff; --muted:#a7b4d4; --line:#33415f;
+  --light:#e9d2ac; --dark:#a86d3c; --accent:#5b9bff; --accent-fg:#0d1424; --good:#4cc47e; --bad:#ff7a66; color-scheme:dark }
+body{background:var(--bg);color:var(--fg);font-family:var(--body);
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:20px 32px}
+.wrap{max-width:520px;margin:0 auto;display:flex;flex-direction:column;gap:14px;align-items:stretch}
+h1{font-family:var(--display);font-weight:800;font-size:clamp(28px,7vw,40px);margin:0;text-align:center;line-height:1.1;text-wrap:balance}
+h1 span{color:var(--accent)}
+h2{font-family:var(--display);font-weight:800;font-size:26px;margin:0;line-height:1.1;text-wrap:balance}
+.sub{color:var(--muted);margin:0;text-align:center;font-size:16px}
+.topbar{display:flex;align-items:center;gap:10px}
+.topbar h2{flex:1;min-width:0}
+.back{font-family:var(--display);font-weight:700;font-size:16px;border:0;border-radius:12px;padding:6px 12px;cursor:pointer;background:var(--panel);color:var(--fg);box-shadow:0 3px 0 rgba(0,0,0,.1)}
+.bigchoice{display:grid;gap:12px}
+.choice{display:flex;align-items:center;gap:14px;text-align:left;border:0;border-radius:18px;padding:16px 18px;cursor:pointer;
+  background:var(--panel);color:var(--fg);box-shadow:0 4px 0 rgba(0,0,0,.1);font-family:var(--body)}
+.choice .ico{font-size:40px;line-height:1}
+.choice b{display:block;font-family:var(--display);font-size:22px;line-height:1.1}
+.choice small{color:var(--muted);font-size:15px}
+.choice:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.1)}
+.choice:focus-visible,.back:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.lines{display:grid;gap:10px}
+.lineCard{background:var(--panel);border-radius:16px;padding:12px 14px;display:flex;flex-direction:column;gap:8px;box-shadow:0 3px 0 rgba(0,0,0,.08)}
+.lineCard .head{display:flex;align-items:baseline;gap:8px}
+.lineCard .head b{font-family:var(--display);font-size:20px;flex:1;min-width:0}
+.lineCard .stars{color:var(--star);font-size:20px;letter-spacing:1px}
+.lineCard p{margin:0;color:var(--muted);font-size:15px}
+.lineCard .row{display:flex;gap:8px;flex-wrap:wrap}
+.bubble{background:var(--panel);border-radius:18px;padding:12px 16px;text-align:center;box-shadow:0 3px 0 rgba(0,0,0,.08);
+  display:flex;flex-direction:column;gap:4px;min-height:3.4em;justify-content:center}
+#why{font-size:17px;line-height:1.35}
+#why .mv{font-family:var(--display);font-weight:800;font-size:20px;color:var(--accent);white-space:nowrap}
+#why .ok{color:var(--good);font-weight:800}
+#why .no{color:var(--bad);font-weight:800}
+#prompt{font-family:var(--display);font-weight:700;font-size:20px}
+#moveList{font-family:var(--display);font-size:16px;color:var(--muted);text-align:center;min-height:1.4em;line-height:1.4;overflow-wrap:anywhere}
+#moveList b{color:var(--fg)}
+.boardWrap{position:relative}
+.board{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,minmax(0,1fr));width:100%;aspect-ratio:1;max-width:100%;
+  border:6px solid var(--dark);border-radius:12px;overflow:hidden;user-select:none;touch-action:manipulation}
+#arrow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.sq{position:relative;border:0;padding:0;margin:0;display:flex;align-items:center;justify-content:center;cursor:pointer;
+  font-size:clamp(28px,9.5vw,52px);line-height:1;font-family:"Segoe UI Symbol","Noto Sans Symbols 2","DejaVu Sans",serif}
+.sq.l{background:var(--light)} .sq.d{background:var(--dark)}
+.sq.last{box-shadow:inset 0 0 0 100px var(--last)}
+.sq.hint{box-shadow:inset 0 0 0 100px var(--shadow)}
+.sq.sel{box-shadow:inset 0 0 0 100px var(--sel)}
+.sq.check{box-shadow:inset 0 0 0 100px var(--check)}
+.sq:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
+.sq .w{color:#fff;text-shadow:0 0 2px #000,0 0 2px #000,0 2px 2px rgba(0,0,0,.4);position:relative;z-index:1}
+.sq .b{color:#1b1b1b;text-shadow:0 1px 0 rgba(255,255,255,.35);position:relative;z-index:1}
+.sq.hint::after{content:"";position:absolute;width:26%;height:26%;border-radius:50%;background:var(--dot)}
+.sq.hint.cap::after{width:86%;height:86%;background:transparent;border:5px solid var(--dot)}
+.coord{position:absolute;font-family:var(--body);font-size:10px;font-weight:700;opacity:.6;color:#3a2410;z-index:1}
+.coord.f{right:3px;bottom:2px}.coord.r{left:3px;top:2px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+button.big{font-family:var(--display);font-weight:700;font-size:18px;border:0;border-radius:14px;padding:10px 18px;cursor:pointer;
+  background:var(--accent);color:var(--accent-fg);box-shadow:0 4px 0 rgba(0,0,0,.18)}
+button.big.alt{background:var(--panel);color:var(--fg)}
+button.big.pk{background:var(--pumpkin);color:#2a1400}
+button.big.sm{font-size:16px;padding:7px 14px}
+button.big:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
+button.big:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
+.tip{color:var(--muted);text-align:center;font-size:15px;margin:0}
+.modeTag{font-family:var(--display);font-weight:700;font-size:14px;border-radius:999px;padding:2px 10px;background:var(--line);color:var(--fg);white-space:nowrap}
+@media (prefers-reduced-motion:no-preference){.sq{transition:background .15s}}
+html{-webkit-text-size-adjust:100%;touch-action:manipulation}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
+.sq{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+.sq span{font-variant-emoji:text}
+</style>
+
+<div class="wrap">
+  <!-- Home -->
+  <section id="home" class="wrap" style="padding:0">
+    <h1>Zayn <span>vs</span> Claude ♞</h1>
+    <p class="sub">What do you want to do?</p>
+    <p class="sub"><a href="../" style="color:var(--accent);font-weight:700">← Zayn's Arcade</a></p>
+    <div class="bigchoice">
+      <button class="choice" id="goPlay"><span class="ico">♟️</span><span><b>Play a game</b><small>You are White. Try to beat Claude!</small></span></button>
+      <button class="choice" id="goLearn"><span class="ico">📖</span><span><b>Learn openings</b><small>Learn the first moves, like a chess champion.</small></span></button>
+    </div>
+  </section>
+
+  <!-- Openings menu -->
+  <section id="menu" class="wrap" style="padding:0" hidden>
+    <div class="topbar"><button class="back" id="menuBack">← Home</button><h2>Learn openings</h2></div>
+    <div class="bigchoice" id="openingList"></div>
+  </section>
+
+  <!-- One opening's lines -->
+  <section id="opening" class="wrap" style="padding:0" hidden>
+    <div class="topbar"><button class="back" id="openBack">← Openings</button><h2 id="openTitle"></h2></div>
+    <p class="sub" id="openBlurb"></p>
+    <div class="lines" id="lineList"></div>
+    <p class="tip"><b>Learn</b> shows a green arrow. <b>Practice</b> has no arrow. Finish a Practice with no hints to earn a ⭐</p>
+  </section>
+
+  <!-- Board -->
+  <section id="play" class="wrap" style="padding:0" hidden>
+    <div class="topbar"><button class="back" id="playBack">← Back</button><h2 id="playTitle">Zayn vs Claude</h2><span class="modeTag" id="modeTag" hidden></span></div>
+    <div class="bubble"><div id="why"></div><div id="prompt">Your turn, Zayn! Tap a white piece.</div></div>
+    <div class="boardWrap">
+      <div class="board" id="board" role="grid" aria-label="Chess board"></div>
+    </div>
+    <div id="moveList"></div>
+    <div class="btns" id="playBtns">
+      <button class="big alt" id="undo">↩ Take back</button>
+      <button class="big" id="newGame">New game</button>
+    </div>
+    <div class="btns" id="endBtns" hidden>
+      <button class="big" id="playOn">Play on vs Claude ♟️</button>
+      <button class="big alt" id="again">Try again</button>
+      <button class="big alt" id="toLines">Pick a line</button>
+    </div>
+    <p class="tip" id="playTip">Tap a piece to see everywhere it can go, then tap a green square to move.</p>
+  </section>
+</div>
+
+<script>
+(function(){
+// ===================== Opening book =====================
+// Add new openings to this list on other days. Each line lists every move from move 1, with a short "why".
+const HALLOWEEN_START=[
+  ["e4","Grab the middle and open paths for your queen and bishop."],
+  ["e5","Black grabs the middle too."],
+  ["Nf3","Your knight jumps out and attacks the pawn on e5."],
+  ["Nc6","Black's knight guards the pawn."],
+  ["Nc3","Bring out your other knight."],
+  ["Nf6","Black does the same. Four knights are out."],
+  ["Nxe5","The surprise! Your knight takes the pawn, even though Black can take your knight."],
+  ["Nxe5","Black takes your knight. Black now has an extra piece."],
+  ["d4","Your pawn attacks the knight on e5. Now you chase Black's knights and take the middle."],
+];
+const OPENINGS=[
+  {id:"halloween", name:"Halloween Gambit", ico:"🎃", blurb:"Give Black a knight, then chase Black's knights home and take the middle!",
+   lines:[
+    {id:"chase", name:"Line 1: The Knight Chase", intro:"The main line. Your pawns chase Black's knights all the way home.",
+     moves:[...HALLOWEEN_START,
+      ["Nc6","Black's knight runs back to c6."],
+      ["d5","Chase it again! Your pawn attacks the knight."],
+      ["Ne5","The knight hops back to e5."],
+      ["f4","Another pawn attacks it. Knights hate being poked by pawns."],
+      ["Ng6","The knight runs to g6."],
+      ["e5","Now attack Black's other knight on f6."],
+      ["Ng8","It runs all the way home. Black's pieces are stuck at the back."],
+      ["d6","Push deep into Black's side. This pawn blocks Black's bishop."],
+      ["cxd6","Black takes your pawn."],
+      ["exd6","Take back. Your pawn on d6 is a thorn in Black's side."]],
+     ending:"Your plan next: Nb5, then Nc7+. Your knight checks the king and attacks the rook at the same time!"},
+    {id:"g6", name:"Line 2: Black hides on g6", intro:"Black's knight hides on g6. You aim your bishop at f7.",
+     moves:[...HALLOWEEN_START,
+      ["Ng6","Black's knight hides on g6."],
+      ["e5","Chase Black's other knight on f6."],
+      ["Ng8","The knight runs all the way home."],
+      ["Bc4","Your bishop aims at f7, the weakest square near Black's king."],
+      ["d5","Black's pawn blocks your bishop's path and attacks it."],
+      ["Bxd5","Take the pawn. Your bishop still aims at f7."],
+      ["c6","Black's pawn attacks your bishop."]],
+     ending:"Your bishop is attacked! Move it to safety. Bb3 is a good square because it still aims at f7."},
+    {id:"best", name:"Line 3: Black's best defense", intro:"Strong players play 6... Bb4. Learn it so you don't get surprised.",
+     moves:[...HALLOWEEN_START,
+      ["Nc6","Black's knight runs back to c6."],
+      ["d5","Chase it again."],
+      ["Bb4","Black doesn't run! The bishop pins your knight on c3 to your king. Careful!"],
+      ["dxc6","Take the knight. Now you have your piece back."],
+      ["Nxe4","Black takes your e4 pawn. Your knight on c3 can't take back, because it is pinned to your king."],
+      ["Qd4","Your queen attacks Black's knight on e4 and bishop on b4 at the same time."],
+      ["Qe7","Black's queen guards the knight and points at your king."],
+      ["Be3","Your bishop blocks the queen's path to your king."],
+      ["O-O","Black castles to keep the king safe."],
+      ["Bd3","Your bishop attacks the knight and clears the way for you to castle."],
+      ["Nxc3","Black trades knights."],
+      ["bxc3","Take back with your pawn."],
+      ["Bd6","Black's bishop steps back."],
+      ["cxb7","Your pawn takes a pawn."],
+      ["Bxb7","Black takes it back."],
+      ["O-O","Castle! Your king is safe. (Tap your king, then the square two to the right.)"]],
+     ending:"Both sides have the same pieces again. When Black plays 6... Bb4, stop attacking and play safe."},
+    {id:"trap", name:"Line 4: The Pumpkin Trap 🎃", intro:"A real game from 1997. Checkmate on move 14!",
+     moves:[...HALLOWEEN_START,
+      ["Ng6","Black's knight hides on g6."],
+      ["e5","Chase the other knight."],
+      ["Ng8","It runs home."],
+      ["Bc4","Your bishop aims at f7."],
+      ["c6","Black gets ready to play d5 and block your bishop."],
+      ["Qf3","Your queen joins the bishop. Both aim at f7. You threaten Qxf7#!"],
+      ["f6","Black blocks your queen and attacks your e5 pawn."],
+      ["O-O","Castle. Your king is safe and your rook joins the fight. (Tap your king, then the square two to the right.)"],
+      ["d5","Black's pawn jumps two squares and attacks your bishop."],
+      ["exd6","En passant! Your e5 pawn takes the pawn that just jumped past it, and lands on d6."],
+      ["Bxd6","Black's bishop takes your pawn."],
+      ["Ne4","Your knight attacks the bishop and looks at f6."],
+      ["N8e7","Black's knight from g8 goes to e7. This is the mistake!"],
+      ["Qxf6","Queen sacrifice! Your queen takes the pawn on f6."],
+      ["gxf6","Black takes your queen."],
+      ["Nxf6+","Check! Your knight takes on f6."],
+      ["Kf8","The king's only move."],
+      ["Bh6#","CHECKMATE! The king has nowhere to go."]],
+     ending:"The bishop checks the king. Your knight and other bishop guard every escape square!"},
+   ]},
+];
+
+// ===================== Helpers =====================
+const VS="\uFE0E"; // text style, so iPhones don't turn the pawn into an emoji
+const GLYPH={k:"♚"+VS,q:"♛"+VS,r:"♜"+VS,b:"♝"+VS,n:"♞"+VS,p:"♟"+VS};
+const NAME={k:"king",q:"queen",r:"rook",b:"bishop",n:"knight",p:"pawn"};
+const VAL={p:1,n:3,b:3,r:5,q:9,k:0};
+const $=id=>document.getElementById(id);
+const boardEl=$("board");
+const cheers=["Nice move!","Great job!","Ooh, sneaky!","Good thinking!","Wow!","Cool move!"];
+const clean=s=>s.replace(/[+#!?]/g,"");
+let stars={};
+try{ stars=JSON.parse(localStorage.getItem("zc-stars")||"{}")||{}; }catch(e){ stars={}; }
+function saveStars(){ try{ localStorage.setItem("zc-stars",JSON.stringify(stars)); }catch(e){} }
+
+// ===================== State =====================
+// mode: "free" (normal game) | "learn" | "practice" | "playon" | "done"
+let game=new Chess(), mode="free", selected=null, hints=[], last=null, thinking=false;
+let lastMode="learn"; let opening=null, line=null, idx=0, wrong=0, usedHint=false, showArrow=null;
+
+function show(id){ for(const s of ["home","menu","opening","play"]) $(s).hidden=(s!==id); window.scrollTo(0,0); }
+function setWhy(html){ $("why").innerHTML=html; }
+function setPrompt(t){ $("prompt").textContent=t; }
+
+// ===================== Board drawing =====================
+function render(){
+  boardEl.innerHTML="";
+  const files="abcdefgh"; let kingInCheck=null;
+  if(game.in_check()) for(let r=1;r<=8;r++) for(const f of files){const p=game.get(f+r); if(p&&p.type==="k"&&p.color===game.turn()) kingInCheck=f+r;}
+  for(let r=8;r>=1;r--) for(let fi=0;fi<8;fi++){
+    const sq=files[fi]+r, p=game.get(sq);
+    const b=document.createElement("button");
+    b.className="sq "+((fi+r)%2===1?"l":"d"); b.id="sq-"+sq;
+    if(last&&(sq===last.from||sq===last.to)) b.classList.add("last");
+    const h=hints.find(m=>m.to===sq);
+    if(h){ b.classList.add("hint"); if(h.captured) b.classList.add("cap"); }
+    if(sq===selected) b.classList.add("sel");
+    if(sq===kingInCheck) b.classList.add("check");
+    if(p){const s=document.createElement("span"); s.className=p.color; s.textContent=GLYPH[p.type]; b.appendChild(s);}
+    if(r===1){const c=document.createElement("span"); c.className="coord f"; c.textContent=files[fi]; b.appendChild(c);}
+    if(fi===0){const c=document.createElement("span"); c.className="coord r"; c.textContent=r; b.appendChild(c);}
+    b.setAttribute("aria-label",sq+(p?" "+(p.color==="w"?"white ":"black ")+NAME[p.type]:""));
+    b.addEventListener("click",()=>tap(sq));
+    boardEl.appendChild(b);
+  }
+  drawArrow(); drawMoveList();
+}
+function sqXY(sq){ return [ "abcdefgh".indexOf(sq[0])+.5, 8-(+sq[1])+.5 ]; }
+function drawArrow(){
+  if(!showArrow) return;
+  const [x1,y1]=sqXY(showArrow.from), [x2,y2]=sqXY(showArrow.to);
+  const dx=x2-x1, dy=y2-y1, len=Math.hypot(dx,dy), ux=dx/len, uy=dy/len;
+  const ex=x2-ux*.35, ey=y2-uy*.35;
+  const svg=`<svg id="arrow" viewBox="0 0 8 8" preserveAspectRatio="none" aria-hidden="true">
+    <line x1="${x1+ux*.2}" y1="${y1+uy*.2}" x2="${ex}" y2="${ey}" stroke="rgba(30,160,70,.85)" stroke-width=".22" stroke-linecap="round"/>
+    <polygon points="${x2},${y2} ${ex-uy*.32},${ey+ux*.32} ${ex+uy*.32},${ey-ux*.32}" fill="rgba(30,160,70,.95)"/></svg>`;
+  boardEl.insertAdjacentHTML("beforeend",svg);
+}
+function drawMoveList(){
+  const h=game.history(); if(!h.length){ $("moveList").innerHTML=""; return; }
+  const startNum=+((startFen||"").split(" ")[5]||1), blackFirst=(startFen||"").split(" ")[1]==="b";
+  let out=[], n=startNum, i=0;
+  if(blackFirst){ out.push(`${n}... ${h[0]}`); i=1; n++; }
+  for(;i<h.length;i+=2){ out.push(`${n}. ${h[i]}`+(h[i+1]?` ${h[i+1]}`:"")); n++; }
+  const html=out.map((s,k)=>k===out.length-1?`<b>${s}</b>`:s).join("  ");
+  $("moveList").innerHTML=html;
+}
+let startFen=null;
+
+// ===================== Tapping pieces =====================
+function tap(sq){
+  if(thinking||mode==="done"||game.game_over()||game.turn()!=="w") return;
+  const p=game.get(sq);
+  const h=hints.find(m=>m.to===sq);
+  if(h&&selected){ tryMove(selected,sq); return; }
+  if(p&&p.color==="w"){
+    selected=sq; hints=game.moves({square:sq,verbose:true});
+    if(mode==="free"||mode==="playon")
+      setPrompt(hints.length?`Your ${NAME[p.type]} can go to the green squares.`:`That ${NAME[p.type]} can't move right now. Try another!`);
+  } else { selected=null; hints=[]; }
+  render();
+}
+function tryMove(from,to){
+  const mv=game.move({from,to,promotion:"q"});
+  selected=null; hints=[];
+  if(!mv){ render(); return; }
+  if(mode==="learn"||mode==="practice") return bookCheck(mv);
+  last=mv; render();
+  if(endCheck()) return;
+  let t=mv.captured?`Yum! You got my ${NAME[mv.captured]}! 😮`:cheers[Math.floor(Math.random()*cheers.length)];
+  if(game.in_check()) t="Check! My king is in trouble! 😱";
+  setWhy(`<span class="mv">${moveLabel(mv)}</span> ${t}`); setPrompt("Claude is thinking…");
+  thinking=true; setTimeout(claudeMove,700);
+}
+function moveLabel(mv){
+  const ply=game.history().length; // after the move was played
+  const n=Math.ceil(ply/2) + ((+(startFen||"x x x x x 1").split(" ")[5]||1)-1);
+  return mv.color==="w"?`${n}. ${mv.san}`:`${n}... ${mv.san}`;
+}
+
+// ===================== Claude (friendly bot) =====================
+function claudeMove(){
+  const moves=game.moves({verbose:true});
+  let best=null,bestScore=-1e9;
+  for(const m of moves){
+    let s=Math.random()*2.5;
+    if(m.captured) s+=VAL[m.captured]*1.2;
+    game.move(m);
+    if(game.in_checkmate()) s+=100;
+    let worst=0;
+    for(const r of game.moves({verbose:true})) if(r.captured&&r.to===m.to) worst=Math.max(worst,VAL[r.captured]);
+    s-=worst*.8; game.undo();
+    if(s>bestScore){bestScore=s;best=m;}
+  }
+  const mv=game.move(best); last=mv; thinking=false; render();
+  if(endCheck()) return;
+  let t=`I moved my ${NAME[mv.piece]} to ${mv.to}.`;
+  if(mv.captured) t=`I got your ${NAME[mv.captured]}! 😄`;
+  if(game.in_check()) t="Check! Your king needs to escape! 👑";
+  setWhy(`<span class="mv">${moveLabel(mv)}</span> ${t}`); setPrompt("Your turn, Zayn!");
+}
+function endCheck(){
+  if(game.in_checkmate()){
+    setPrompt(game.turn()==="b"?"CHECKMATE! You WIN, Zayn! 🏆🎉":"Checkmate! I win this time. Want to play again? 🙂"); return true; }
+  if(game.in_draw()||game.in_stalemate()){ setPrompt("It's a tie! Good game! 🤝"); return true; }
+  return false;
+}
+
+// ===================== Opening trainer =====================
+function bookMoveSquares(san){ // where does the expected move go from/to?
+  const m=game.move(san); if(!m) return null; game.undo(); return {from:m.from,to:m.to};
+}
+function startLine(op,ln,m){
+  opening=op; line=ln; mode=m; lastMode=m; idx=0; track("chess-"+m+"-"+ln.id); wrong=0; usedHint=false;
+  game=new Chess(); startFen=game.fen(); last=null; selected=null; hints=[]; showArrow=null; thinking=false;
+  $("playTitle").textContent=ln.name.replace(/^Line \d+: /,"");
+  $("modeTag").hidden=false; $("modeTag").textContent=m==="learn"?"Learn":"Practice";
+  $("playBtns").hidden=true; $("endBtns").hidden=true; $("playTip").hidden=false;
+  $("playTip").textContent=m==="learn"?"Follow the green arrow. Tap a piece to see all the squares it can reach."
+                                     :"No arrows! Remember the moves. After 2 wrong tries you get a hint.";
+  setWhy(`<b>${op.name}</b> · ${ln.intro}`);
+  show("play"); nextStep();
+}
+function nextStep(){
+  showArrow=null;
+  if(idx>=line.moves.length){ finishLine(); return; }
+  const [san]=line.moves[idx];
+  if(game.turn()==="w"){
+    wrong=0;
+    if(mode==="learn"){ showArrow=bookMoveSquares(san); setPrompt("Your move! Follow the green arrow."); }
+    else setPrompt(`Your move! What does White play on move ${Math.floor(idx/2)+1}?`);
+    render();
+  } else {
+    thinking=true; setPrompt("Claude is thinking…"); render();
+    setTimeout(()=>{
+      const mv=game.move(san); last=mv; thinking=false;
+      setWhy(`<span class="mv">${moveLabel(mv)}</span> ${line.moves[idx][1]}`);
+      idx++; nextStep();
+    },1100);
+  }
+}
+function bookCheck(mv){
+  const [san,why]=line.moves[idx];
+  if(clean(mv.san)===clean(san)){
+    last=mv; idx++; showArrow=null;
+    setWhy(`<span class="ok">✓ Yes!</span> <span class="mv">${moveLabel(mv)}</span> ${why}`);
+    nextStep(); return;
+  }
+  game.undo(); wrong++;
+  if(mode==="learn"){
+    setWhy(`<span class="no">Not that one!</span> Follow the green arrow.`);
+  } else if(wrong>=2){
+    usedHint=true; showArrow=bookMoveSquares(san);
+    setWhy(`<span class="no">Not quite.</span> Here's a hint: follow the green arrow.`);
+  } else {
+    setWhy(`<span class="no">Not quite!</span> Try again. Think about the plan.`);
+  }
+  render();
+}
+function finishLine(){
+  const key=opening.id+":"+line.id;
+  let msg;
+  if(mode==="practice"&&!usedHint){
+    const first=!stars[key]; stars[key]=true; saveStars(); track("chess-star-"+line.id);
+    msg=first?"⭐ You earned a star! No hints at all!":"⭐ Perfect again! No hints!";
+  } else if(mode==="practice"){
+    msg="You finished it! Try again with no hints to earn a ⭐";
+  } else msg="You finished the line! Now try it in Practice mode for a ⭐";
+  const mate=game.in_checkmate();
+  setWhy((mate?`<span class="ok">CHECKMATE! 🎃🏆</span> `:`<span class="ok">Line complete! 🎉</span> `)+line.ending);
+  setPrompt(msg);
+  mode="done"; showArrow=null; render();
+  $("endBtns").hidden=false; $("playOn").hidden=mate||game.game_over();
+  $("playTip").hidden=true;
+}
+function playOn(){
+  mode="playon"; $("endBtns").hidden=true; $("playBtns").hidden=false; $("modeTag").textContent="Play on";
+  $("playTip").hidden=false; $("playTip").textContent="Now it's a real game! Tap a piece to see everywhere it can go.";
+  render();
+  if(game.turn()==="b"){ setPrompt("Claude is thinking…"); thinking=true; setTimeout(claudeMove,700); }
+  else setPrompt("Your turn, Zayn! Keep the attack going!");
+}
+
+// ===================== Menus =====================
+function renderOpenings(){
+  $("openingList").innerHTML="";
+  for(const op of OPENINGS){
+    const got=op.lines.filter(l=>stars[op.id+":"+l.id]).length;
+    const b=document.createElement("button"); b.className="choice";
+    b.innerHTML=`<span class="ico">${op.ico}</span><span><b>${op.name}</b><small>${op.lines.length} lines · ${got} of ${op.lines.length} ⭐</small></span>`;
+    b.addEventListener("click",()=>openOpening(op));
+    $("openingList").appendChild(b);
+  }
+  const more=document.createElement("p"); more.className="tip"; more.textContent="More openings coming soon!";
+  $("openingList").appendChild(more);
+}
+function openOpening(op){
+  opening=op; $("openTitle").textContent=op.ico+" "+op.name; $("openBlurb").textContent=op.blurb;
+  $("lineList").innerHTML="";
+  for(const ln of op.lines){
+    const card=document.createElement("div"); card.className="lineCard";
+    const has=stars[op.id+":"+ln.id];
+    card.innerHTML=`<div class="head"><b>${ln.name}</b><span class="stars">${has?"⭐":"☆"}</span></div><p>${ln.intro}</p>
+      <div class="row"><button class="big sm">📖 Learn</button><button class="big sm pk">🎯 Practice</button></div>`;
+    const [lb,pb]=card.querySelectorAll("button");
+    lb.addEventListener("click",()=>startLine(op,ln,"learn"));
+    pb.addEventListener("click",()=>startLine(op,ln,"practice"));
+    $("lineList").appendChild(card);
+  }
+  show("opening");
+}
+function track(name){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:name,title:name,event:true}); }catch(e){} }
+function newFreeGame(){
+  track("chess-game-started");
+  game=new Chess(); startFen=game.fen(); mode="free"; selected=null; hints=[]; last=null; thinking=false; showArrow=null;
+  $("playTitle").textContent="Zayn vs Claude"; $("modeTag").hidden=true;
+  $("playBtns").hidden=false; $("endBtns").hidden=true; $("playTip").hidden=false;
+  $("playTip").textContent="Tap a piece to see everywhere it can go, then tap a green square to move.";
+  setWhy(""); setPrompt("Your turn, Zayn! Tap a white piece.");
+  render(); show("play");
+}
+
+$("goPlay").addEventListener("click",newFreeGame);
+$("goLearn").addEventListener("click",()=>{renderOpenings();show("menu");});
+$("menuBack").addEventListener("click",()=>show("home"));
+$("openBack").addEventListener("click",()=>{renderOpenings();show("menu");});
+$("playBack").addEventListener("click",()=>{
+  thinking=false;
+  if(opening&&mode!=="free") openOpening(opening); else show("home");
+});
+$("newGame").addEventListener("click",()=>{ if(mode==="playon") openOpening(opening); else newFreeGame(); });
+$("undo").addEventListener("click",()=>{
+  if(thinking||game.history().length<1) return;
+  game.undo(); if(game.turn()==="b") game.undo();
+  selected=null; hints=[]; last=null; render(); setWhy(""); setPrompt("Okay, try again! Your turn.");
+});
+$("playOn").addEventListener("click",playOn);
+$("again").addEventListener("click",()=>startLine(opening,line,lastMode));
+$("toLines").addEventListener("click",()=>openOpening(opening));
+
+// Test hook for automated checks (harmless for players)
+window.__zc={get game(){return game;},tryMove,startLine,OPENINGS,get mode(){return mode;},get idx(){return idx;},get stars(){return stars;},playOn,tap};
+
+show("home");
+})();
+</script>
+
+</body>
+</html>

@@ -107,7 +107,27 @@ body.touch .gun{padding:6px 10px;font-size:14px;cursor:pointer}
 #rotate{position:fixed;inset:0;display:none;align-items:center;justify-content:center;flex-direction:column;gap:10px;z-index:20;
   background:rgba(10,20,15,.92);color:#fff;font-family:var(--display);font-weight:800;font-size:26px;text-align:center;padding:24px}
 #rotate div{font-size:70px}
-@media (orientation:portrait){ body.touch #rotate{display:flex} }
+@media (orientation:portrait){ body.touch:not(.upright) #rotate{display:flex} }
+#rotate p{margin:0;max-width:30ch;font-size:17px;font-weight:600;line-height:1.4;opacity:.9}
+#rotate b{color:#ffcf3a}
+#rotate button{margin-top:8px;font-family:var(--display);font-weight:800;font-size:20px;border:0;border-radius:16px;padding:12px 22px;
+  background:#ffcf3a;color:#2a1d00;box-shadow:0 5px 0 rgba(0,0,0,.3);cursor:pointer}
+/* ---- Phone held upright: stack the HUD above the touch buttons ---- */
+@media (orientation:portrait){
+  body.touch .hud.bottom{left:0;right:0;bottom:calc(196px + env(safe-area-inset-bottom,0px));padding-left:12px;padding-right:12px}
+  body.touch .hud.bottom .bar,body.touch .hud.bottom .bar.small{width:calc(50% - 8px)}
+  body.touch .hud.bottom .bar .row{font-size:15px}
+  body.touch .gun{padding:4px 7px;font-size:12px}
+  body.touch .gun b{font-size:11px;padding:0 4px}
+  body.touch .hud.top{flex-direction:column;align-items:center;gap:6px;top:calc(8px + env(safe-area-inset-top,0px));padding-left:126px;padding-right:124px}
+  body.touch .hud.top .bar{width:100%}
+  #tFire{width:96px;height:96px;font-size:32px;right:calc(16px + env(safe-area-inset-right,0px));bottom:calc(28px + env(safe-area-inset-bottom,0px))}
+  #tJump{width:64px;height:64px;font-size:24px;right:calc(124px + env(safe-area-inset-right,0px));bottom:calc(24px + env(safe-area-inset-bottom,0px))}
+  #tNade{width:60px;height:60px;font-size:26px;right:calc(30px + env(safe-area-inset-right,0px));bottom:calc(136px + env(safe-area-inset-bottom,0px))}
+  #tScope{width:64px;height:64px;font-size:24px;right:calc(108px + env(safe-area-inset-right,0px));bottom:calc(104px + env(safe-area-inset-bottom,0px))}
+  #tPause{top:auto;bottom:calc(150px + env(safe-area-inset-bottom,0px));right:auto;left:max(14px,env(safe-area-inset-left,0px));width:46px;height:46px;font-size:18px}
+  #joyBase{width:130px;height:130px;margin:-65px 0 0 -65px}
+}
 .keys[hidden]{display:none}
 #scope{position:fixed;inset:0;pointer-events:none;--sx:50%;--sy:50%;
   background:radial-gradient(circle at var(--sx) var(--sy),transparent 0,transparent 30vmin,#05080a calc(30vmin + 2px))}
@@ -151,7 +171,9 @@ body.touch .gun{padding:6px 10px;font-size:14px;cursor:pointer}
   <button class="tbtn" id="tScope" aria-label="Sniper scope" hidden>🎯<span>SCOPE</span></button>
   <button class="tbtn" id="tPause" aria-label="Pause">II</button>
 </div>
-<div id="rotate"><div>🔄</div>Turn your tablet sideways to play!</div>
+<div id="rotate"><div>🔄</div>Turn your phone or tablet sideways to play!
+  <p>Screen won't turn? Switch off <b>Rotation Lock 🔒</b> in Control Center (iPhone) or Quick Settings (Android).</p>
+  <button id="upright">Play upright anyway</button></div>
 <div id="cross"><i class="a"></i><i class="b"></i><i class="c"></i><i class="d"></i><i class="e"></i></div>
 <div id="toast"></div>
 <div id="tip" hidden></div>
@@ -1097,7 +1119,10 @@ function startLevel(i,heal){
 }
 // ---------- Touch controls (Android tablets) ----------
 const joyBase=$("joyBase"), joyKnob=$("joyKnob");
-function joyHome(){ joyBase.style.left="110px"; joyBase.style.top=(innerHeight-110)+"px"; joyKnob.style.transform=""; joyBase.classList.remove("on"); }
+function joyHome(){ const up=innerHeight>innerWidth; joyBase.style.left=(up?90:110)+"px"; joyBase.style.top=(innerHeight-(up?100:110))+"px"; joyKnob.style.transform=""; joyBase.classList.remove("on"); }
+try{ if(localStorage.getItem("dino-upright")==="1") document.body.classList.add("upright"); }catch(e){}
+document.getElementById("upright").addEventListener("click",()=>{ document.body.classList.add("upright");
+  try{ localStorage.setItem("dino-upright","1"); }catch(e){} setTimeout(()=>{ resize(); if(touchMode&&joy.id===null) joyHome(); },50); });
 function enableTouch(){
   if(touchMode) return;
   touchMode=true; lockOK=false; mouseIn=false; unlock();

@@ -209,7 +209,7 @@ body.touch .gun{padding:6px 10px;font-size:14px;cursor:pointer}
   </div>
   <div class="keys" id="keysPC">
     <b>Mouse</b><span>Look and aim with the +</span>
-    <b>Click</b><span>Shoot (hold for the Blaster and Mini-gun)</span>
+    <b>Click or Space</b><span>Shoot (hold for the Blaster and Mini-gun)</span>
     <b>1 2 3 4 5 6</b><span>Change gun (or scroll the mouse wheel)</span>
     <b>G</b><span>Throw a grenade (or right-click)</span>
     <b>📦 Ammo</b><span>You start each level with 300. Walk over ammo boxes to get more!</span>
@@ -217,7 +217,7 @@ body.touch .gun{padding:6px 10px;font-size:14px;cursor:pointer}
     <b>Right-click</b><span>With the Sniper: hold to use the scope (or hold Z)</span>
     <b>W A S D</b><span>Walk</span>
     <b>← →</b><span>Turn</span>
-    <b>Space</b><span>Jump</span>
+    <b>Ctrl</b><span>Jump</span>
     <b>Esc</b><span>Take a break</span>
   </div>
   <div class="btns"><button id="go">Play!</button></div>
@@ -1041,15 +1041,21 @@ function explode(point,W){
 }
 
 // ---------- Input ----------
+// Space = shoot, Ctrl = jump
+const jumpHeld=()=>keys.ControlLeft||keys.ControlRight||keys.JumpBtn;
 addEventListener("keydown",e=>{
   keys[e.code]=true;
   if(["Space","ArrowUp","ArrowDown","ArrowLeft","ArrowRight"].includes(e.code)) e.preventDefault();
+  if(e.ctrlKey&&live()) e.preventDefault(); // stop Ctrl+S, Ctrl+D etc. from opening browser menus mid-jump
+  if(e.code==="Space"&&!e.repeat) shoot();
   if(/^Digit[1-6]$/.test(e.code)) setWeapon(+e.code.slice(5)-1);
   if(e.code==="KeyQ") setWeapon(S.weapon+1);
   if(e.code==="KeyG"||e.code==="KeyE") throwNade();
 });
 addEventListener("keyup",e=>keys[e.code]=false);
 addEventListener("blur",()=>{for(const k in keys)keys[k]=false;mouseHeld=false;rightHeld=false;});
+// Ctrl+W (walk + jump) would close the tab: ask first while a game is going
+addEventListener("beforeunload",e=>{ if(S.running&&!S.over){ e.preventDefault(); e.returnValue=""; } });
 canvas.addEventListener("mousedown",e=>{
   if(e.button===2){ mouseX=e.clientX; mouseY=e.clientY; if(S.weapon===5) rightHeld=true; else throwNade(); return; }
   if(e.button!==0) return;
@@ -1171,7 +1177,7 @@ function holdBtn(id,down,up){
   b.addEventListener("touchend",end); b.addEventListener("touchcancel",end);
 }
 holdBtn("tFire",()=>{ mouseHeld=true; shoot(); },()=>{ mouseHeld=false; });
-holdBtn("tJump",()=>{ keys.Space=true; },()=>{ keys.Space=false; });
+holdBtn("tJump",()=>{ keys.JumpBtn=true; },()=>{ keys.JumpBtn=false; });
 holdBtn("tNade",()=>throwNade());
 holdBtn("tScope",()=>{ rightHeld=true; },()=>{ rightHeld=false; });
 holdBtn("tPause",()=>{ if(live()){ S.paused=true; mouseHeld=false; rightHeld=false; $("paused").hidden=false; } });
@@ -1274,14 +1280,14 @@ function loop(){
       if(jm>.12){ mx+=fwd.x*(-joy.y)+right.x*joy.x; mz+=fwd.z*(-joy.y)+right.z*joy.x; spd=9*Math.max(.35,jm); } }
     const moving=mx||mz, ml=Math.hypot(mx,mz)||1;
     if(moving){S.pos.x=Math.max(-WORLD,Math.min(WORLD,S.pos.x+mx/ml*spd*dt));S.pos.z=Math.max(-WORLD,Math.min(WORLD,S.pos.z+mz/ml*spd*dt));}
-    if(keys.Space&&S.pos.y<=.001) S.vy=6;
+    if(jumpHeld()&&S.pos.y<=.001) S.vy=6;
     S.vy-=18*dt; S.pos.y=Math.max(0,S.pos.y+S.vy*dt);
     const bob=moving&&S.pos.y===0?Math.sin(t*10)*.04:0;
     camera.position.set(S.pos.x,1.7+S.pos.y+bob,S.pos.z);
     camera.rotation.set(S.pitch,S.yaw,0,"YXZ");
     S.shootCd=Math.max(0,S.shootCd-dt); S.recoil=Math.max(0,S.recoil-dt*7);
-    if(mouseHeld&&WEAPONS[S.weapon].auto) shoot();
-    if(miniBarrels) miniBarrels.rotation.z+=dt*(S.weapon===4&&mouseHeld?28:2);
+    if((mouseHeld||keys.Space)&&WEAPONS[S.weapon].auto) shoot();
+    if(miniBarrels) miniBarrels.rotation.z+=dt*(S.weapon===4&&(mouseHeld||keys.Space)?28:2);
     updateNades(dt); updateBoxes(t); S.ammoWarn-=dt; S.healWarn=(S.healWarn||0)-dt;
     const gm=gunModels[S.weapon]; gm.position.z=(S.weapon===3?-.5:-.55)+S.recoil*.08; gm.rotation.x=S.recoil*.25;
 

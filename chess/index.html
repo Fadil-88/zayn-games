@@ -1820,23 +1820,29 @@ h2{font-family:var(--display);font-weight:800;font-size:26px;margin:0;line-heigh
 #moveList{font-family:var(--display);font-size:16px;color:var(--muted);text-align:center;min-height:1.4em;line-height:1.4;overflow-wrap:anywhere}
 #moveList b{color:var(--fg)}
 .boardWrap{position:relative}
-.board{position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,minmax(0,1fr));width:100%;aspect-ratio:1;max-width:100%;
-  border:6px solid var(--dark);border-radius:12px;overflow:hidden;user-select:none;touch-action:manipulation}
+/* Board: green and cream squares in a gold frame. Squares are built once; pieces live in their own layer and slide. */
+.board{--pad:4px;position:relative;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));grid-template-rows:repeat(8,minmax(0,1fr));width:100%;aspect-ratio:1;max-width:100%;
+  border:4px solid #d4aa3f;padding:var(--pad);background:#20242c;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.25);user-select:none;touch-action:manipulation}
+.pieces,.arrows{position:absolute;inset:var(--pad);pointer-events:none}
+.arrows{z-index:3}
 #arrow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
-.sq{position:relative;border:0;padding:0;margin:0;display:flex;align-items:center;justify-content:center;cursor:pointer;
-  font-size:clamp(28px,9.5vw,52px);line-height:1;font-family:"Segoe UI Symbol","Noto Sans Symbols 2","DejaVu Sans",serif}
-.sq.l{background:var(--light)} .sq.d{background:var(--dark)}
-.sq.last{box-shadow:inset 0 0 0 100px var(--last)}
-.sq.hint{box-shadow:inset 0 0 0 100px var(--shadow)}
-.sq.sel{box-shadow:inset 0 0 0 100px var(--sel)}
-.sq.check{box-shadow:inset 0 0 0 100px var(--check)}
+.sq{position:relative;border:0;padding:0;margin:0;display:flex;align-items:center;justify-content:center;cursor:pointer;border-radius:0}
+.sq.l{background:#ebecd0} .sq.d{background:#739552}
+.sq.l.last{background:#f5f682} .sq.d.last{background:#b9ca43}
+.sq.l.sel{background:#f7ec74} .sq.d.sel{background:#c2b934}
+.sq.check{background-image:radial-gradient(circle,#ff2d2d 0%,rgba(230,25,25,.85) 30%,rgba(200,0,0,0) 72%)}
 .sq:focus-visible{outline:3px solid var(--accent);outline-offset:-3px}
-.sq .w{color:#fff;text-shadow:0 0 2px #000,0 0 2px #000,0 2px 2px rgba(0,0,0,.4);position:relative;z-index:1}
-.sq .b{color:#1b1b1b;text-shadow:0 1px 0 rgba(255,255,255,.35);position:relative;z-index:1}
-.sq.hint::after{content:"";position:absolute;width:26%;height:26%;border-radius:50%;background:var(--dot)}
-.sq.hint.cap::after{width:86%;height:86%;background:transparent;border:5px solid var(--dot)}
-.coord{position:absolute;font-family:var(--body);font-size:10px;font-weight:700;opacity:.6;color:#3a2410;z-index:1}
-.coord.f{right:3px;bottom:2px}.coord.r{left:3px;top:2px}
+.sq.hint::after{content:"";position:absolute;width:30%;height:30%;border-radius:50%;background:rgba(0,0,0,.16);z-index:2}
+.sq.hint.cap::after{width:88%;height:88%;background:transparent;border:6px solid rgba(0,0,0,.16);box-sizing:border-box}
+.coord{position:absolute;font-family:var(--body);font-size:11px;font-weight:800;line-height:1}
+.sq.l .coord{color:#739552} .sq.d .coord{color:#ebecd0}
+.coord.f{right:3px;bottom:2px}.coord.r{left:3px;top:3px}
+.pc{position:absolute;left:0;top:0;width:12.5%;height:12.5%;transition:transform .24s cubic-bezier(.25,.75,.35,1);will-change:transform;z-index:1}
+.pc.noanim{transition:none}
+.pc.moving{z-index:2}
+.pc.gone{opacity:0;transition:opacity .18s .1s}
+.pc svg{display:block;width:100%;height:100%;filter:drop-shadow(0 2px 0 rgba(0,0,0,.22))}
+@media (prefers-reduced-motion:reduce){.pc{transition:none}}
 .btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
 button.big{font-family:var(--display);font-weight:700;font-size:18px;border:0;border-radius:14px;padding:10px 18px;cursor:pointer;
   background:var(--accent);color:var(--accent-fg);box-shadow:0 4px 0 rgba(0,0,0,.18)}
@@ -1847,13 +1853,15 @@ button.big:active{transform:translateY(2px);box-shadow:0 2px 0 rgba(0,0,0,.18)}
 button.big:focus-visible{outline:3px solid var(--fg);outline-offset:2px}
 .tip{color:var(--muted);text-align:center;font-size:15px;margin:0}
 .modeTag{font-family:var(--display);font-weight:700;font-size:14px;border-radius:999px;padding:2px 10px;background:var(--line);color:var(--fg);white-space:nowrap}
-@media (prefers-reduced-motion:no-preference){.sq{transition:background .15s}}
 html{-webkit-text-size-adjust:100%;touch-action:manipulation}
 button{-webkit-tap-highlight-color:transparent;touch-action:manipulation}
 .sq{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
-.sq span{font-variant-emoji:text}
 </style>
 
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="zcW" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dcdcdc"/></linearGradient>
+  <linearGradient id="zcB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#77736f"/><stop offset="1" stop-color="#3f3d3b"/></linearGradient>
+</defs></svg>
 <div class="wrap">
   <!-- Home -->
   <section id="home" class="wrap" style="padding:0">
@@ -1983,11 +1991,67 @@ const OPENINGS=[
       ["Bh6#","CHECKMATE! The king has nowhere to go."]],
      ending:"The bishop checks the king. Your knight and other bishop guard every escape square!"},
    ]},
+  {id:"scholar", side:"b", name:"Stop Scholar's Mate", ico:"🛡️", blurb:"You play Black! Learn to stop the sneaky 4-move checkmate where White's queen and bishop attack f7.",
+   lines:[
+    {id:"sm-h5", name:"Line 1: Queen on h5", intro:"White's queen jumps to h5 and the bishop aims at f7. Block the attack!",
+     moves:[
+      ["e4","White grabs the middle."],
+      ["e5","You grab the middle too."],
+      ["Bc4","White's bishop aims at f7. That pawn is only guarded by your king."],
+      ["Nc6","Your knight comes out and guards your e5 pawn."],
+      ["Qh5","Danger! The queen attacks f7 too. White threatens Qxf7, checkmate!"],
+      ["g6","Block! Your pawn stops the queen's path to f7, and it attacks the queen."],
+      ["Qf3","The queen runs to f3 and attacks f7 AGAIN, down the f-file."],
+      ["Nf6","Block again! Your knight stands in the queen's way. f7 is safe."],
+      ["Ne2","White brings out a knight."],
+      ["Bg7","Your bishop comes out on the long diagonal. g6 made room for it."],
+      ["Nbc3","White brings out the other knight."],
+      ["O-O","Castle! Your king is safe in the corner. (Tap your king, then the square two to the right.)"]],
+     ending:"You stopped Scholar's Mate! Remember: when the queen and bishop both aim at f7, block the path or attack the queen."},
+    {id:"sm-f3", name:"Line 2: Queen on f3", intro:"This time the queen goes to f3. Block it, then guard f7 again.",
+     moves:[
+      ["e4","White grabs the middle."],
+      ["e5","You grab the middle too."],
+      ["Bc4","The bishop aims at f7."],
+      ["Nc6","Your knight comes out and guards e5."],
+      ["Qf3","The queen attacks f7 down the f-file. White threatens Qxf7, checkmate!"],
+      ["Nf6","Your knight blocks the f-file. The queen can't reach f7."],
+      ["Qb3","Sneaky! The queen hides behind the bishop. Now BOTH aim at f7 from the other side."],
+      ["Qe7","Your queen guards f7. Now f7 has two guards: your king and your queen."],
+      ["Nc3","White brings out a knight."],
+      ["Nd4","Your knight jumps forward and attacks White's queen!"]],
+     ending:"Your knight chases the queen away. A queen that comes out early can be chased by your pieces!"},
+    {id:"sm-trap", name:"Line 3: Catch the Queen 👑", intro:"Your knight on f6 guards h5. If the queen goes there, take it!",
+     moves:[
+      ["e4","White grabs the middle."],
+      ["e5","You grab the middle too."],
+      ["Bc4","The bishop aims at f7."],
+      ["Nf6","Your knight comes out. It guards h5, so the queen can't go there safely."],
+      ["Qh5","Oops! White's queen goes to h5 anyway."],
+      ["Nxh5","Your knight takes the queen! That's the most powerful piece."],
+      ["Bxf7+","White's bishop takes f7 and checks your king."],
+      ["Kxf7","Your king takes the bishop. You are way ahead now!"]],
+     ending:"Before you play a move, check which squares your pieces guard. Your knight caught a queen!"},
+   ]},
 ];
 
 // ===================== Helpers =====================
-const VS="\uFE0E"; // text style, so iPhones don't turn the pawn into an emoji
-const GLYPH={k:"♚"+VS,q:"♛"+VS,r:"♜"+VS,b:"♝"+VS,n:"♞"+VS,p:"♟"+VS};
+// Our own cartoon piece set, drawn in a 100x100 box. Parts are drawn back to front.
+const BASE='<rect x="22" y="78" width="56" height="12" rx="5"/>';
+const SKIRT='<path d="M36,64 H64 L70,80 H30 Z"/>';
+const PIECE_PARTS={
+  p:'<path d="M38,80 C38,66 42,54 45,46 H55 C58,54 62,66 62,80 Z"/>'+BASE+'<rect x="35" y="40" width="30" height="8" rx="4"/><circle cx="50" cy="27" r="13"/>',
+  r:'<path d="M33,40 H67 L70,80 H30 Z"/>'+BASE+'<rect x="28" y="34" width="44" height="9" rx="3"/><path d="M27,13 h11 v8 h6.5 v-8 h11 v8 h6.5 v-8 h11 v22 h-46 Z"/>',
+  b:'<path d="M40,64 H60 L66,80 H34 Z"/>'+BASE+'<path d="M50,19 C33,31 30,47 37,59 H63 C70,47 67,31 50,19 Z"/><rect x="33" y="57" width="34" height="9" rx="4"/><circle cx="50" cy="13" r="6"/><path class="dt" d="M58,30 L48,42"/>',
+  n:'<path d="M68,80 C70,62 74,40 62,24 L60,9 L51,19 C39,18 29,28 23,42 C20,48 24,54 31,52 C37,50 43,47 48,45 C42,55 35,65 34,80 Z"/>'+BASE+'<circle class="df" cx="45" cy="30" r="3.4"/><circle class="df" cx="27" cy="45" r="1.8"/><path class="dt" d="M63,28 C67,42 67,58 64,72"/>',
+  q:SKIRT+BASE+'<path d="M33,62 H67 L78,24 L70,44 L64,18 L57,42 L50,14 L43,42 L36,18 L30,44 L22,24 Z"/><rect x="31" y="58" width="38" height="9" rx="4"/>'+[[22,24],[36,18],[50,14],[64,18],[78,24]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="4.5"/>`).join(""),
+  k:SKIRT+BASE+'<path d="M50,32 C27,22 17,45 34,61 H66 C83,45 73,22 50,32 Z"/><rect x="31" y="58" width="38" height="9" rx="4"/><path d="M46,4 h8 v7 h7 v7 h-7 v13 h-8 v-13 h-7 v-7 h7 Z"/>',
+};
+function pieceSVG(c,t){
+  const w=c==="w", ink=w?"#5b5956":"#262524", det=w?"#5b5956":"#d9d5d0";
+  const parts=PIECE_PARTS[t].replace(/class="df"/g,`fill="${det}" stroke="none"`).replace(/class="dt"/g,`fill="none" stroke="${det}" stroke-width="3"`);
+  return `<svg viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(50 56) scale(1.1) translate(-50 -56)" fill="url(#zc${w?"W":"B"})" stroke="${ink}" stroke-width="3.4" stroke-linejoin="round" stroke-linecap="round">${parts}</g></svg>`;
+}
 const NAME={k:"king",q:"queen",r:"rook",b:"bishop",n:"knight",p:"pawn"};
 const VAL={p:1,n:3,b:3,r:5,q:9,k:0};
 const $=id=>document.getElementById(id);
@@ -2002,36 +2066,91 @@ function saveStars(){ try{ localStorage.setItem("zc-stars",JSON.stringify(stars)
 // mode: "free" (normal game) | "learn" | "practice" | "playon" | "done"
 let game=new Chess(), mode="free", selected=null, hints=[], last=null, thinking=false;
 let lastMode="learn"; let opening=null, line=null, idx=0, wrong=0, usedHint=false, showArrow=null;
+let me="w"; // which colour Zayn plays (Black for the Scholar's Mate lessons); the board turns round when he is Black
+const COLOR={w:"White",b:"Black"};
 
 function show(id){ for(const s of ["home","menu","opening","play"]) $(s).hidden=(s!==id); window.scrollTo(0,0); }
 function setWhy(html){ $("why").innerHTML=html; }
 function setPrompt(t){ $("prompt").textContent=t; }
 
 // ===================== Board drawing =====================
-function render(){
+const FILES="abcdefgh";
+let flip=false, builtFlip=null, pieceEls={}, pendingAnim=[];
+const pieceLayer=document.createElement("div"); pieceLayer.className="pieces";
+const arrowLayer=document.createElement("div"); arrowLayer.className="arrows";
+// Squares are made once (and again only when the board turns round), so tapping never rebuilds the board.
+function buildBoard(){
   boardEl.innerHTML="";
-  const files="abcdefgh"; let kingInCheck=null;
-  if(game.in_check()) for(let r=1;r<=8;r++) for(const f of files){const p=game.get(f+r); if(p&&p.type==="k"&&p.color===game.turn()) kingInCheck=f+r;}
-  for(let r=8;r>=1;r--) for(let fi=0;fi<8;fi++){
-    const sq=files[fi]+r, p=game.get(sq);
-    const b=document.createElement("button");
+  const rows=flip?[1,2,3,4,5,6,7,8]:[8,7,6,5,4,3,2,1], cols=flip?[7,6,5,4,3,2,1,0]:[0,1,2,3,4,5,6,7];
+  rows.forEach((r,ri)=>cols.forEach((fi,ci)=>{
+    const sq=FILES[fi]+r, b=document.createElement("button");
     b.className="sq "+((fi+r)%2===1?"l":"d"); b.id="sq-"+sq;
-    if(last&&(sq===last.from||sq===last.to)) b.classList.add("last");
-    const h=hints.find(m=>m.to===sq);
-    if(h){ b.classList.add("hint"); if(h.captured) b.classList.add("cap"); }
-    if(sq===selected) b.classList.add("sel");
-    if(sq===kingInCheck) b.classList.add("check");
-    if(p){const s=document.createElement("span"); s.className=p.color; s.textContent=GLYPH[p.type]; b.appendChild(s);}
-    if(r===1){const c=document.createElement("span"); c.className="coord f"; c.textContent=files[fi]; b.appendChild(c);}
-    if(fi===0){const c=document.createElement("span"); c.className="coord r"; c.textContent=r; b.appendChild(c);}
-    b.setAttribute("aria-label",sq+(p?" "+(p.color==="w"?"white ":"black ")+NAME[p.type]:""));
+    if(ri===7){const c=document.createElement("span"); c.className="coord f"; c.textContent=FILES[fi]; b.appendChild(c);}
+    if(ci===0){const c=document.createElement("span"); c.className="coord r"; c.textContent=r; b.appendChild(c);}
     b.addEventListener("click",()=>tap(sq));
     boardEl.appendChild(b);
-  }
-  drawArrow(); drawMoveList();
+  }));
+  pieceLayer.innerHTML=""; pieceEls={};
+  boardEl.appendChild(pieceLayer); boardEl.appendChild(arrowLayer);
+  builtFlip=flip;
 }
-function sqXY(sq){ return [ "abcdefgh".indexOf(sq[0])+.5, 8-(+sq[1])+.5 ]; }
+function xy(sq){ const fi=FILES.indexOf(sq[0]), r=+sq[1]; return flip?[7-fi,r-1]:[fi,8-r]; }
+function place(el,sq){ const [x,y]=xy(sq); el.style.transform=`translate(${x*100}%,${y*100}%)`; }
+// Make a move on the game and remember how the pieces should slide
+function animOf(mv){
+  const a=[{from:mv.from,to:mv.to}], r=mv.from[1];
+  if(mv.flags.includes("k")) a.push({from:"h"+r,to:"f"+r});
+  if(mv.flags.includes("q")) a.push({from:"a"+r,to:"d"+r});
+  return a;
+}
+function play(m){ const mv=game.move(m); if(mv) pendingAnim.push(...animOf(mv)); return mv; }
+function takeBack(){ const mv=game.undo(); if(mv) pendingAnim.push(...animOf(mv).map(x=>({from:x.to,to:x.from}))); return mv; }
+function removePiece(el){ el.classList.add("gone"); setTimeout(()=>el.remove(),320); }
+function syncPieces(){
+  const old=pieceEls, moved={}, next={};
+  for(const m of pendingAnim){ const el=old[m.from]; if(!el) continue; delete old[m.from]; moved[m.to]=el; }
+  pendingAnim=[];
+  for(let r=1;r<=8;r++) for(const f of FILES){
+    const sq=f+r, p=game.get(sq);
+    let el=moved[sq]||null, sitting=old[sq]||null; delete old[sq];
+    if(el&&sitting){ removePiece(sitting); sitting=null; }       // captured
+    el=el||sitting;
+    if(!p){ if(el) removePiece(el); continue; }
+    const key=p.color+p.type;
+    if(el&&el.dataset.k!==key){
+      if(moved[sq]){ el.dataset.k=key; el.innerHTML=pieceSVG(p.color,p.type); } // promotion
+      else { removePiece(el); el=null; }
+    }
+    if(!el){
+      el=document.createElement("div"); el.className="pc noanim"; el.dataset.k=key; el.innerHTML=pieceSVG(p.color,p.type);
+      pieceLayer.appendChild(el); place(el,sq);
+      requestAnimationFrame(()=>requestAnimationFrame(()=>el.classList.remove("noanim")));
+    } else if(moved[sq]){
+      el.classList.remove("noanim"); el.classList.add("moving"); place(el,sq);
+      setTimeout(()=>el.classList.remove("moving"),280);
+    }
+    next[sq]=el;
+  }
+  for(const sq in old) removePiece(old[sq]);
+  pieceEls=next;
+}
+function render(){
+  if(builtFlip!==flip) buildBoard();
+  let kingInCheck=null;
+  if(game.in_check()) for(let r=1;r<=8;r++) for(const f of FILES){const p=game.get(f+r); if(p&&p.type==="k"&&p.color===game.turn()) kingInCheck=f+r;}
+  for(let r=1;r<=8;r++) for(const f of FILES){
+    const sq=f+r, b=document.getElementById("sq-"+sq), p=game.get(sq), h=hints.find(m=>m.to===sq);
+    b.classList.toggle("last",!!(last&&(sq===last.from||sq===last.to)));
+    b.classList.toggle("hint",!!h); b.classList.toggle("cap",!!(h&&h.captured));
+    b.classList.toggle("sel",sq===selected);
+    b.classList.toggle("check",sq===kingInCheck);
+    b.setAttribute("aria-label",sq+(p?" "+(p.color==="w"?"white ":"black ")+NAME[p.type]:""));
+  }
+  syncPieces(); drawArrow(); drawMoveList();
+}
+function sqXY(sq){ const [x,y]=xy(sq); return [x+.5,y+.5]; }
 function drawArrow(){
+  arrowLayer.innerHTML="";
   if(!showArrow) return;
   const [x1,y1]=sqXY(showArrow.from), [x2,y2]=sqXY(showArrow.to);
   const dx=x2-x1, dy=y2-y1, len=Math.hypot(dx,dy), ux=dx/len, uy=dy/len;
@@ -2039,7 +2158,7 @@ function drawArrow(){
   const svg=`<svg id="arrow" viewBox="0 0 8 8" preserveAspectRatio="none" aria-hidden="true">
     <line x1="${x1+ux*.2}" y1="${y1+uy*.2}" x2="${ex}" y2="${ey}" stroke="rgba(30,160,70,.85)" stroke-width=".22" stroke-linecap="round"/>
     <polygon points="${x2},${y2} ${ex-uy*.32},${ey+ux*.32} ${ex+uy*.32},${ey-ux*.32}" fill="rgba(30,160,70,.95)"/></svg>`;
-  boardEl.insertAdjacentHTML("beforeend",svg);
+  arrowLayer.innerHTML=svg;
 }
 function drawMoveList(){
   const h=game.history(); if(!h.length){ $("moveList").innerHTML=""; return; }
@@ -2054,11 +2173,11 @@ let startFen=null;
 
 // ===================== Tapping pieces =====================
 function tap(sq){
-  if(thinking||mode==="done"||game.game_over()||game.turn()!=="w") return;
+  if(thinking||mode==="done"||game.game_over()||game.turn()!==me) return;
   const p=game.get(sq);
   const h=hints.find(m=>m.to===sq);
   if(h&&selected){ tryMove(selected,sq); return; }
-  if(p&&p.color==="w"){
+  if(p&&p.color===me){
     selected=sq; hints=game.moves({square:sq,verbose:true});
     if(mode==="free"||mode==="playon")
       setPrompt(hints.length?`Your ${NAME[p.type]} can go to the green squares.`:`That ${NAME[p.type]} can't move right now. Try another!`);
@@ -2066,7 +2185,7 @@ function tap(sq){
   render();
 }
 function tryMove(from,to){
-  const mv=game.move({from,to,promotion:"q"});
+  const mv=play({from,to,promotion:"q"});
   selected=null; hints=[];
   if(!mv){ render(); return; }
   if(mode==="learn"||mode==="practice") return bookCheck(mv);
@@ -2097,7 +2216,7 @@ function claudeMove(){
     s-=worst*.8; game.undo();
     if(s>bestScore){bestScore=s;best=m;}
   }
-  const mv=game.move(best); last=mv; thinking=false; render();
+  const mv=play(best); last=mv; thinking=false; render();
   if(endCheck()) return;
   let t=`I moved my ${NAME[mv.piece]} to ${mv.to}.`;
   if(mv.captured) t=`I got your ${NAME[mv.captured]}! 😄`;
@@ -2106,7 +2225,7 @@ function claudeMove(){
 }
 function endCheck(){
   if(game.in_checkmate()){
-    setPrompt(game.turn()==="b"?"CHECKMATE! You WIN, Zayn! 🏆🎉":"Checkmate! I win this time. Want to play again? 🙂"); return true; }
+    setPrompt(game.turn()!==me?"CHECKMATE! You WIN, Zayn! 🏆🎉":"Checkmate! I win this time. Want to play again? 🙂"); return true; }
   if(game.in_draw()||game.in_stalemate()){ setPrompt("It's a tie! Good game! 🤝"); return true; }
   return false;
 }
@@ -2117,6 +2236,7 @@ function bookMoveSquares(san){ // where does the expected move go from/to?
 }
 function startLine(op,ln,m){
   opening=op; line=ln; mode=m; lastMode=m; idx=0; track("chess-"+m+"-"+ln.id); wrong=0; usedHint=false;
+  me=op.side||"w"; flip=me==="b";
   game=new Chess(); startFen=game.fen(); last=null; selected=null; hints=[]; showArrow=null; thinking=false;
   $("playTitle").textContent=ln.name.replace(/^Line \d+: /,"");
   $("modeTag").hidden=false; $("modeTag").textContent=m==="learn"?"Learn":"Practice";
@@ -2130,15 +2250,15 @@ function nextStep(){
   showArrow=null;
   if(idx>=line.moves.length){ finishLine(); return; }
   const [san]=line.moves[idx];
-  if(game.turn()==="w"){
+  if(game.turn()===me){
     wrong=0;
     if(mode==="learn"){ showArrow=bookMoveSquares(san); setPrompt("Your move! Follow the green arrow."); }
-    else setPrompt(`Your move! What does White play on move ${Math.floor(idx/2)+1}?`);
+    else setPrompt(`Your move! What does ${COLOR[me]} play on move ${Math.floor(idx/2)+1}?`);
     render();
   } else {
     thinking=true; setPrompt("Claude is thinking…"); render();
     setTimeout(()=>{
-      const mv=game.move(san); last=mv; thinking=false;
+      const mv=play(san); last=mv; thinking=false;
       setWhy(`<span class="mv">${moveLabel(mv)}</span> ${line.moves[idx][1]}`);
       idx++; nextStep();
     },1100);
@@ -2151,7 +2271,7 @@ function bookCheck(mv){
     setWhy(`<span class="ok">✓ Yes!</span> <span class="mv">${moveLabel(mv)}</span> ${why}`);
     nextStep(); return;
   }
-  game.undo(); wrong++;
+  game.undo(); pendingAnim=[]; wrong++;
   if(mode==="learn"){
     setWhy(`<span class="no">Not that one!</span> Follow the green arrow.`);
   } else if(wrong>=2){
@@ -2172,7 +2292,7 @@ function finishLine(){
     msg="You finished it! Try again with no hints to earn a ⭐";
   } else msg="You finished the line! Now try it in Practice mode for a ⭐";
   const mate=game.in_checkmate();
-  setWhy((mate?`<span class="ok">CHECKMATE! 🎃🏆</span> `:`<span class="ok">Line complete! 🎉</span> `)+line.ending);
+  setWhy((mate?`<span class="ok">CHECKMATE! ${opening.ico}🏆</span> `:`<span class="ok">Line complete! 🎉</span> `)+line.ending);
   setPrompt(msg);
   mode="done"; showArrow=null; render();
   $("endBtns").hidden=false; $("playOn").hidden=mate||game.game_over();
@@ -2182,7 +2302,7 @@ function playOn(){
   mode="playon"; $("endBtns").hidden=true; $("playBtns").hidden=false; $("modeTag").textContent="Play on";
   $("playTip").hidden=false; $("playTip").textContent="Now it's a real game! Tap a piece to see everywhere it can go.";
   render();
-  if(game.turn()==="b"){ setPrompt("Claude is thinking…"); thinking=true; setTimeout(claudeMove,700); }
+  if(game.turn()!==me){ setPrompt("Claude is thinking…"); thinking=true; setTimeout(claudeMove,700); }
   else setPrompt("Your turn, Zayn! Keep the attack going!");
 }
 
@@ -2192,7 +2312,7 @@ function renderOpenings(){
   for(const op of OPENINGS){
     const got=op.lines.filter(l=>stars[op.id+":"+l.id]).length;
     const b=document.createElement("button"); b.className="choice";
-    b.innerHTML=`<span class="ico">${op.ico}</span><span><b>${op.name}</b><small>${op.lines.length} lines · ${got} of ${op.lines.length} ⭐</small></span>`;
+    b.innerHTML=`<span class="ico">${op.ico}</span><span><b>${op.name}</b><small>${op.side==="b"?"You play Black · ":""}${op.lines.length} lines · ${got} of ${op.lines.length} ⭐</small></span>`;
     b.addEventListener("click",()=>openOpening(op));
     $("openingList").appendChild(b);
   }
@@ -2217,6 +2337,7 @@ function openOpening(op){
 function track(name){ try{ if(window.goatcounter&&window.goatcounter.count) window.goatcounter.count({path:name,title:name,event:true}); }catch(e){} }
 function newFreeGame(){
   track("chess-game-started");
+  me="w"; flip=false;
   game=new Chess(); startFen=game.fen(); mode="free"; selected=null; hints=[]; last=null; thinking=false; showArrow=null;
   $("playTitle").textContent="Zayn vs Claude"; $("modeTag").hidden=true;
   $("playBtns").hidden=false; $("endBtns").hidden=true; $("playTip").hidden=false;
@@ -2236,7 +2357,7 @@ $("playBack").addEventListener("click",()=>{
 $("newGame").addEventListener("click",()=>{ if(mode==="playon") openOpening(opening); else newFreeGame(); });
 $("undo").addEventListener("click",()=>{
   if(thinking||game.history().length<1) return;
-  game.undo(); if(game.turn()==="b") game.undo();
+  takeBack(); if(game.turn()!==me&&game.history().length) takeBack();
   selected=null; hints=[]; last=null; render(); setWhy(""); setPrompt("Okay, try again! Your turn.");
 });
 $("playOn").addEventListener("click",playOn);

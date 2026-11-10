@@ -278,5 +278,6 @@ addEventListener("visibilitychange",()=>{ last=performance.now(); });
 window.__bp={G,get balloons(){return balloons},hit,startLevel,LEVELS};
 })();
 </script>
+<script>/* offline: save the arcade on this device */if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});</script>
 </body>
 </html>

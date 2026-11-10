@@ -1415,5 +1415,6 @@ ally.position.set(0,0,5); hud(); drawMap(fwd.set(0,0,-1),right.set(1,0,0)); loop
 })();
 </script>
 
+<script>/* offline: save the arcade on this device */if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});</script>
 </body>
 </html>

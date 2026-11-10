@@ -432,5 +432,6 @@ window.__nr={G,ship,get enemies(){return enemies},startGame,update,keys};
 })();
 </script>
 
+<script>/* offline: save the arcade on this device */if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});</script>
 </body>
 </html>

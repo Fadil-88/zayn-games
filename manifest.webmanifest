@@ -1,0 +1,13 @@
+{
+  "name": "Zayn's Arcade",
+  "short_name": "Zayn's Arcade",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#120c2c",
+  "theme_color": "#120c2c",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"}
+  ]
+}

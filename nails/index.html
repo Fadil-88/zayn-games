@@ -270,5 +270,6 @@ $("#closeG").onclick=()=>$("#grownOv").hidden=true;
 $("#reset").onclick=e=>{if(e.target.textContent!=="Tap again to reset"){e.target.textContent="Tap again to reset";return}
   S={served:0,stickers:[],stats:{}};for(const l of ORDER)S.stats[l]={seen:0,first:0};save();stickersBar();$("#grownOv").hidden=true};
 </script>
+<script>/* offline: save the arcade on this device */if("serviceWorker" in navigator)addEventListener("load",function(){navigator.serviceWorker.register("../sw.js").catch(function(){});});</script>
 </body>
 </html>
